@@ -58,7 +58,7 @@ module.exports = {
       vault.generateNewAddress(pwDerivedKey, 1);
       const accountId = web3.utils.toChecksumAddress(vault.getAddresses()[0]);
       const pKey = vault.exportPrivateKey(accountId.toLowerCase(), pwDerivedKey);
-      const dataKey = web3.utils.sha3(runtimeConfig.mnemonics[mnemonic]).substr(2);
+      const dataKey = web3.utils.sha3(accountId + runtimeConfig.mnemonics[mnemonic]).substr(2);
       runtimeConfig.accounts.push(accountId);
       runtimeConfig.accountMap[accountId] = pKey;
       runtimeConfig.keyConfig[web3.utils.soliditySha3(accountId)] = dataKey;

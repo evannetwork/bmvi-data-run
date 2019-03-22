@@ -10,3 +10,6 @@ docs/_build/*
 smart-agent-bmvi-data-run/.DS_Store
 .DS_Store
 *.lock
+build/contracts/compiled.js
+build/contracts/compiled.json
+scripts/config/createdProfiles.json
