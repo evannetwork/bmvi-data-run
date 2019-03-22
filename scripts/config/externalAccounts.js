@@ -11,9 +11,4 @@ module.exports = {
     profileKey: 'c832ab188dc417d17fe080d862b0f6ef185995862565c549c444d30e602884be',
   },
 */
-  deploymentAccount: {
-    id: '',
-    privateKey: '',
-    profileKey: 'no data interaction'
-  }
 };
