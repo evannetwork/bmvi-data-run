@@ -24,17 +24,18 @@
   For more information, please contact evan GmbH at this address:
   https://evan.network/license/
 */
-// import evan libs
-import { DAppLoader, EvanIframe } from '@evan.network/ui-vue-core';
+
+// vue imports
+import Vue from 'vue';
+import Component from 'vue-class-component';
+import { Prop } from 'vue-property-decorator';
+import axios from 'axios';
+
+// evan.network imports
+import * as bcc from '@evan.network/api-blockchain-core';
 import * as dappBrowser from '@evan.network/ui-dapp-browser';
-import OverviewComponent from './components/overview/overview.vue';
-import ListComponent from './components/list/list.vue';
-// map them to element names, so they can be used within templates
-var routeRegistration = [
-    { path: '', component: OverviewComponent },
-    { path: 'bmvi', component: EvanIframe, props: { src: 'https://www.bmvi.de' } },
-    { path: 'list', component: ListComponent },
-    { path: "detail/" + dappBrowser.getDomainName() + " }/:address", component: DAppLoader },
-];
-export default routeRegistration;
-//# sourceMappingURL=routes.js.map
+
+@Component({ })
+export default class InfoComponent extends Vue {
+
+}

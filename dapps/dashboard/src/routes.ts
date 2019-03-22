@@ -30,12 +30,13 @@ import * as dappBrowser from '@evan.network/ui-dapp-browser';
 
 import OverviewComponent from './components/overview/overview.vue';
 import ListComponent from './components/list/list.vue';
+import InfoComponent from './components/info/info.vue';
 
 // map them to element names, so they can be used within templates
 const routeRegistration: Array<RouteRegistrationInterface> = [
   { path: '', component: OverviewComponent },
-  { path: 'bmvi', component: EvanIframe, props: { src: 'https://www.bmvi.de' } },
   { path: 'list', component: ListComponent },
+  { path: 'usecase', component: InfoComponent },
   { path: `vehicle.bmvi.${ dappBrowser.getDomainName() } }/:address`, component: DAppLoader },
 ];
 
