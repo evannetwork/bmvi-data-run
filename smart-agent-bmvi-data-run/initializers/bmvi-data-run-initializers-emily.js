@@ -8,6 +8,7 @@ const {
   Initializer,
 } = require('actionhero')
 
+const abiDecoder = require('abi-decoder')
 
 module.exports = class SmartAgentBmviDataRunInitializerEmily extends Initializer {
   constructor() {

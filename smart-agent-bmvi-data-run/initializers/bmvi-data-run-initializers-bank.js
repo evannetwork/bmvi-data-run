@@ -5,6 +5,7 @@ const {
   Initializer,
 } = require('actionhero')
 
+const abiDecoder = require('abi-decoder')
 
 module.exports = class SmartAgentBmvidatarunBankWatcherInitializer extends Initializer {
   constructor() {
