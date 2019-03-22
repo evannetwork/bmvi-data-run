@@ -27,12 +27,82 @@
 
 <template>
   <div class="p-3">
-    <div class="bg-level-1 border p-3">
-      <evan-loading v-if="loading"></evan-loading>
-      <div v-if="!loading">
-        {{ data }}
+    <evan-loading v-if="loading"></evan-loading>
+    <template v-if="!loading">
+      <div class="bg-level-1 border p-3">
+        <div class="d-flex p-2 pt-3 pb-3 border-bottom">
+          <h4 class="m-0 ml-3">
+            {{ `_bmvi.vehicle.identification.title` | translate }}
+          </h4>
+        </div>
+
+        <table class="table table-borderless mt-3">
+          <tbody>
+            <tr
+              v-for="(field, index) in [ 'fin', 'hsn', 'modelKeyNumber', 'processNumber', 'tsn' ]">
+              <td>{{ `_bmvi.vehicle.identification.${ field }` | translate }}</td>
+              <td>{{ vehicle.metadata[field] }}</td>
+            </tr>
+            <tr
+              v-for="(field, index) in vehicle.identifiers">
+              <td>{{ `_bmvi.vehicle.identification.${ field }` | translate }}</td>
+              <td>{{ vehicle.identifiers[field] }}</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-    </div>
+      <div class="bg-level-1 border p-3 mt-3">
+        <div class="d-flex p-2 pt-3 pb-3 border-bottom">
+          <h4 class="m-0 ml-3">
+            {{ `_bmvi.vehicle.engine.title` | translate }}
+          </h4>
+        </div>
+
+        <table class="table table-borderless mt-3">
+          <tbody>
+            <tr
+              v-for="(field, index) in [ 'fuel', 'type',  ]">
+              <td>{{ `_bmvi.vehicle.engine.${ field }` | translate }}</td>
+              <td>{{ `_bmvi.vehicle.engine.${ vehicle.metadata[field] }` | translate }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="bg-level-1 border p-3 mt-3">
+        <div class="d-flex p-2 pt-3 pb-3 border-bottom">
+          <h4 class="m-0 ml-3">
+            {{ `_bmvi.vehicle.vehicle-specific.title` | translate }}
+          </h4>
+        </div>
+
+        <table class="table table-borderless mt-3">
+          <tbody>
+            <tr
+              v-for="(field, index) in [ 'cubicCapacity', 'doors', 'kw', 'ps' ]">
+              <td>{{ `_bmvi.vehicle.vehicle-specific.${ field }` | translate }}</td>
+              <td>{{ vehicle.metadata[field] }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="bg-level-1 border p-3 mt-3">
+        <div class="d-flex p-2 pt-3 pb-3 border-bottom">
+          <h4 class="m-0 ml-3">
+            {{ `_bmvi.vehicle.further-informations.title` | translate }}
+          </h4>
+        </div>
+
+        <table class="table table-borderless mt-3">
+          <tbody>
+            <tr
+              v-for="(field, index) in vehicle.furtherInformation">
+              <td>{{ field.id }}</td>
+              <td>{{ field.desc }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </template>
   </div>
 </template>
 

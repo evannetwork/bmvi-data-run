@@ -36,15 +36,39 @@ export default {
         "zb2": "ZB ||"
       },
       "back-to-list": "Zurück zur Flottenübersicht",
+      "engine": {
+        "engine": "Motor",
+        "fuel": "Kraftstoff",
+        "title": "Motor",
+        "type": "Typ"
+      },
       "error": "Fehler",
       "error-desc": "Die Daten für diese Fahrzeug konnten nicht geladen werden.<br>Bitte versuchen Sie es erneut.",
+      "further-informations": {
+        "title": "Weitere Informationen"
+      },
+      "identification": {
+        "fin": "FIN",
+        "hsn": "Herstellerschlüssel Nummer",
+        "modelKeyNumber": "Modellschlüsselnummer",
+        "orderNumber": "Bestellnummer",
+        "processNumber": "Vorgangsnummer",
+        "title": "Fahrzeugidenfizierung",
+        "tsn": "Typschlüsselnummer"
+      },
       "nav": {
         "course": "Fahrroute",
         "detail": "Generelle Daten",
         "financing": "Finanzierung",
         "maintenance": "Reperatur- / Wartungsprotokoll"
       },
-      "title": "Fahrzeug"
+      "title": "Fahrzeug",
+      "vehicle-specific": {
+        "cubicCapacity": "Hubraum",
+        "doors": "Anzahl Türen",
+        "kw": "KW",
+        "ps": "PS"
+      }
     }
   }
 }
