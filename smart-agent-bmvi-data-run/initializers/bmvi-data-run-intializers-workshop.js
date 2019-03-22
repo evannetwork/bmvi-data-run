@@ -25,10 +25,6 @@ module.exports = class SmartAgentBmvidatarunWorkshopWatcherInitializer extends I
     class SmartAgentBmviDataRunWorkshop extends api.smartAgents.SmartAgent {
       async initialize () {
         await super.initialize()
-
-        // watch for new repair messages
-        // when the car is financed check if bank approves
-        // then allow the repair
       }
 
       async addRepairMessage(address, message) {

@@ -32,13 +32,16 @@ module.exports = class SmartAgentBmvidatarunInsuranceWatcherInitializer extends 
       }
 
       async startEventWatching() {
-
         this.managedTwins = api.config.smartAgentBmviDataRunInsurance.cars || []
         // add DataContract abi to decoder
         abiDecoder.addABI(JSON.parse(this.runtime.contractLoader.contracts.DataContract.interface))
 
         api.eth.blockEmitter.on('data', async (block) => {
           for (let tx of block.transactions) {
+            if (tx.from === this.config.ethAccount) {
+              // ignore own entries
+              continue;
+            }
             // check if target of transaction in list of contracts from profile
             if (this.managedTwins.includes(tx.to)) {
               const input = abiDecoder.decodeMethod(tx.input)
@@ -58,14 +61,15 @@ module.exports = class SmartAgentBmvidatarunInsuranceWatcherInitializer extends 
                     true,
                   )
 
-                  const financed = await this.runtime.dataContract.getEntry(
-                    tx.to,
-                    'financing',
-                    config.ethAccount
-                  )
-
-                  if(financed) {
-                    // how this will be checked?
+                  const requests = entries.filter(entry => entry.description)
+                  if (requests.length) {
+                    const reference = requests[0].reference
+                    await this.runtime.dataContract.addListEntries(
+                      tx.to,
+                      'maintenanceData',
+                      [ { reference, insuraceApproved: true } ],
+                      this.config.ethAccount,
+                    )
                   }
                 }
               }
@@ -78,6 +82,7 @@ module.exports = class SmartAgentBmvidatarunInsuranceWatcherInitializer extends 
     // start the initialization code
     const smartAgentBmviDataRunInsurance = new SmartAgentBmviDataRunInsurance(api.config.smartAgentBmviDataRunInsurance)
     await smartAgentBmviDataRunInsurance.initialize()
+    await smartAgentBmviDataRunInsurance.startEventWatching()
 
     // objects and values used outside initializer
     api.smartAgentBmviDataRunInsurance = smartAgentBmviDataRunInsurance

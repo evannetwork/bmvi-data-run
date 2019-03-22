@@ -38,6 +38,10 @@ module.exports = class SmartAgentBmvidatarunBankWatcherInitializer extends Initi
 
         api.eth.blockEmitter.on('data', async (block) => {
           for (let tx of block.transactions) {
+            if (tx.from === this.config.ethAccount) {
+              // ignore own entries
+              continue;
+            }
             // check if target of transaction in list of contracts from profile
             if (this.managedTwins.includes(tx.to)) {
               const input = abiDecoder.decodeMethod(tx.input)
@@ -63,8 +67,15 @@ module.exports = class SmartAgentBmvidatarunBankWatcherInitializer extends Initi
                     config.ethAccount
                   )
 
-                  if(financed) {
-                    // how this will be checked?
+                  const requests = entries.filter(entry => entry.description)
+                  if (requests.length && financed) {
+                    const reference = requests[0].reference
+                    await this.runtime.dataContract.addListEntries(
+                      tx.to,
+                      'maintenanceData',
+                      [ { reference, bankApproved: true } ],
+                      this.config.ethAccount,
+                    )
                   }
                 }
               }
