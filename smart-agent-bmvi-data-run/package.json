@@ -1,18 +1,22 @@
 {
-    "name": "smart-agent-bmvi-data-run",
-    "description": "handles automatization and external data connections for BMVI Data-Run DApp",
-    "version": "0.0.1",
-    "author": "contractus",
-    "engines": {
-        "node": ">=8.0.0"
-    },
-    "dependencies": {
-        "request": "2.87.0"
-    },
-    "peerDependencies": {
-        "actionhero": ">18.1.0"
-    },
-    "scripts": {
-        "test": "./node_modules/.bin/mocha --reporter spec"
-    }
+  "name": "smart-agent-bmvi-data-run",
+  "description": "handles automatization and external data connections for BMVI Data-Run DApp",
+  "version": "0.0.1",
+  "author": "contractus",
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "dependencies": {
+    "request": "2.87.0",
+    "streamr-client": "^1.0.0"
+  },
+  "resolutions": {
+    "streamr-client/web3": "1.0.0-beta.37"
+  },
+  "peerDependencies": {
+    "actionhero": ">18.1.0"
+  },
+  "scripts": {
+    "test": "./node_modules/.bin/mocha --reporter spec"
+  }
 }
