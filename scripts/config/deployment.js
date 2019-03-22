@@ -54,9 +54,13 @@ const bcConfig = {
   alwaysAutoGasLimit: 1.1
 }
 
+const defaultConfig = {
+  accountId: '0x0Ed0a2610034f0214BBBC43d6e4113E1eD4e3C19',
+}
+
 const runtimeConfig = {
-  // web3Provider: 'wss://testcore.evan.network/ws',                       // default value
-  // ipfs: {host: 'ipfs.test.evan.network', port: '443', protocol: 'https'},    // default value
+  web3Provider: 'wss://testcore.evan.network/ws',                       // default value
+  ipfs: {host: 'ipfs.test.evan.network', port: '443', protocol: 'https'},    // default value
   minBalance: 1000000000000000000,
   bookmarkDefinitions: {
     // bookmarks as ENS domain and DBCP for bookmark
@@ -109,6 +113,30 @@ const runtimeConfig = {
     // // Ethereum private key of 'domainParentOwner'
     // domainParentOwnerKey: process.env.ENS_OWNER_KEY,
   },
+  deployFactory: {
+    ...defaultConfig,
+    ownDomain: 'bmvi-data-run.fifs.registrar.test.evan',
+  },
+  deployTwins: {
+    ...defaultConfig,
+    accounts: {
+      bank: '0x2483205A7689bf78d930519229EA96D43E491D3b',
+      maintenance: '0x1D562a307dF7CB1D28F59E834669eFcc7dE2E4Fc',
+      bmvi: '0xaDb25397Fe94968a22fE1b353290eFfB7c847a8F',
+      insurance: '0x16F7f7643b768665f76D4Ba9Ec79f05cc42DCba9',
+    },
+    description: {
+      public: {
+        name: 'Emily Digital Twin',
+        description: 'Digital Twin for autonomous car "Emily"',
+        author: 'evan GmbH',
+        version: '0.1.0',
+        dbcpVersion: 2,
+      },
+    },
+    factoryDomain: 'emily.factory.bmvi-data-run.fifs.registrar.test.evan',
+    twinsPath: 'twins',
+  },
 }
 
 // circular dependency between this and evan.access.js
@@ -125,7 +153,7 @@ try {
 
   module.exports['runtimeConfig'] = evan.getAccountConfig(runtimeConfig, externalAccounts, managedAccounts)
 } catch(e) {
-  // silent
+  console.error(e)
 }
 
 
