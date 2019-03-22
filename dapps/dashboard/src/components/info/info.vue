@@ -35,12 +35,12 @@
       </div>
 
       <div class="pl-3 pr-3 text-center">
-        <img class="img-fluid p-3 pl-5 pr-5 col-md-6"
+        <img class="img-fluid p-3 pl-5 pr-5 col-md-8"
           :src="`${ $store.state.bmviBaseUrl }/assets/usecase.png`">
       </div>
     </div>
     <div class="d-flex flex-wrap">
-      <div class="col-md-6 p-3" v-for="(usecase, index) in [ 1,2,3,4,5,6 ]">
+      <div class="pl-3 mb-3 col-md-6" v-for="(usecase, index) in [ 1,2,3,4,5,6 ]">
         <div class="bg-level-1 border">
           <div class="d-flex p-2 pt-3 pb-3 border-bottom">
             <h4 class="m-0 ml-3">
