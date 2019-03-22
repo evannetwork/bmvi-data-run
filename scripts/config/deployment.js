@@ -127,8 +127,8 @@ const runtimeConfig = {
     },
     description: {
       public: {
-        name: 'Emily Digital Twin',
-        description: 'Digital Twin for autonomous car "Emily"',
+        name: 'Autonomous Digital Twin',
+        description: 'Digital Twin for an autonomous car',
         author: 'evan GmbH',
         version: '0.1.0',
         dbcpVersion: 2,

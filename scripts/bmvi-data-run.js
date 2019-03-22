@@ -28,7 +28,7 @@ module.exports = {
 
     // create factory
     const factory = await runtime.executor.createContract(
-      'EmilyDataContractFactory', [], { from: accountId, gas: 5e6 });
+      'EmilyDataContractFactory', [], { from: accountId, gas: 6e6 });
 
     // assign factory address to factory domain
     await runtime.nameResolver.setAddress(`emily.${factoryDomain}`, factory.options.address, accountId);
@@ -40,10 +40,10 @@ module.exports = {
     console.group('deployTwins');
     const runtime = runtimes[accountId];
 
-    // TODO
     const relativePath = `${__dirname}/../${twinsPath}`;
     const twinFiles = await promisify(fs.readdir)(relativePath);
 
+    const twinContracts = {};
     for (let twinFile of twinFiles) {
       console.log(twinFile);
       // parse twin file
@@ -59,6 +59,8 @@ module.exports = {
       // create data contract
       const contract = await runtime.dataContract.create(
         factoryDomain, accountId, null, description);
+
+      twinContracts[twinFile] = contract.options.address;
 
       // get block number and keys for sharing
       const cryptor = runtime.cryptoProvider.getCryptorByCryptoAlgo('aes');
@@ -92,6 +94,7 @@ module.exports = {
         sharings, accountId, recipient, section, 0, key, null);
 
       await shareKeyWith('metadata', metadataKey, accountId);
+      await shareKeyWith('financing', financingKey, accountId);
       await shareKeyWith('financing', financingKey, accounts.bank);
       await shareKeyWith('cocData', cocDataKey, accountId);
       await shareKeyWith('cocData', cocDataKey, accounts.maintenance);
@@ -114,6 +117,17 @@ module.exports = {
 
       // save modifications
       await runtime.sharing.saveSharingsToContract(contract.options.address, sharings, accountId);
+
+      // add data from twin file
+      for (let key of Object.keys(twin)) {
+        if (key === 'maintenanceData') {
+          // maintenance data currently not in use
+          continue;
+        }
+        await runtime.dataContract.setEntry(contract, key, twin[key], accountId);
+      }
+
+      console.dir(twinContracts);
     }
 
     console.groupEnd('deployTwins');
