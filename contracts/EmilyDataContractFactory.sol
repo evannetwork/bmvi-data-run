@@ -73,6 +73,8 @@ contract EmilyDataContractFactory is BaseContractFactory {
 
         // entries
         roles.setRoleOperationCapability(
+            ownerRole, 0, hashPropertyCapability(entryLabel, "metadata", setLabel), true);
+        roles.setRoleOperationCapability(
             bankRole, 0, hashPropertyCapability(entryLabel, "financing", setLabel), true);
         roles.setRoleOperationCapability(
             ownerRole, 0, hashPropertyCapability(entryLabel, "cocData", setLabel), true);
