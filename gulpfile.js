@@ -6,20 +6,21 @@ const spawn = require('child_process').spawn
 
 // all the optional gulp targets
 
-try { require('./gulp/compile-contracts.js') }
-catch (e) { if (e.code !== "MODULE_NOT_FOUND") throw e; }
+// try { require('./gulp/compile-contracts.js') }
+// catch (e) { if (e.code !== "MODULE_NOT_FOUND") throw e; }
 
-try { require('./gulp/create-profiles.js') }
-catch (e) { if (e.code !== "MODULE_NOT_FOUND") throw e; }
+// try { require('./gulp/create-profiles.js') }
+// catch (e) { if (e.code !== "MODULE_NOT_FOUND") throw e; }
 
 try { require('./gulp/smart-agents.js') }
 catch (e) { if (e.code !== "MODULE_NOT_FOUND") throw e; }
 
-try { require('./gulp/dapps.js') }
-catch (e) { if (e.code !== "MODULE_NOT_FOUND") throw e; }
 
 // needed for the targets that are always available
-const evan = require('./scripts/evan.access.js')
+const evan = {
+    download:  () => {}
+}
+//const evan = require('./scripts/evan.access.js')
 
 gulp.task('test', () => { console.log('your tests') })
 

@@ -29,7 +29,7 @@
 import { ComponentRegistrationInterface } from '@evan.network/ui-vue-core';
 
 
-import { LMap, LTileLayer, LMarker } from 'vue2-leaflet';
+import { LMap, LTileLayer, LMarker, LPolyline } from 'vue2-leaflet';
 
 // export them all, so other applications can access them
 export { }
@@ -38,7 +38,8 @@ export { }
 const componentRegistration: Array<ComponentRegistrationInterface> = [
   { name: 'l-map', component: LMap },
   { name: 'l-tile-layer', component: LTileLayer},
-  { name: 'l-marker', component: LMarker}
+  { name: 'l-marker', component: LMarker},
+  { name: 'l-polyline', component: LPolyline}
 ];
 
 export default componentRegistration;

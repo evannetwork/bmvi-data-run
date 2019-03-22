@@ -3,8 +3,13 @@
     "@evan.network/edge-server-seed": "^1.0.0",
     "csv-parser": "^2.2.0",
     "gulp": "3.9.1",
+    "streamr-client": "^1.0.0",
     "typescript": "^2.9.2",
-    "web3": "1.0.0-beta.37"
+    "web3": "1.0.0-beta.37",
+    "xhr2": "^0.1.4"
+  },
+  "resolutions": {
+    "streamr-client/web3": "1.0.0-beta.37"
   },
   "description": "BMVI Data-Run project",
   "devDependencies": {

@@ -39,10 +39,10 @@ module.exports = class SmartAgentBmviDataRunInitializerEmily extends Initializer
             //    contractId, 'streamId', this.config.ethAccount)
             const streamId = contractId
             let cursor = 0
-            setInterval(() => {
+            setInterval(async () => {
               // pretend, data is from now
               const row = { ...data[cursor], last_seen: Date.now() }
-              await api.streamer.push(streamId, row)
+              await api.streamr.addToStream(streamId, row)
               if (cursor++ >= data.length) {
                 cursor = 0;
               }

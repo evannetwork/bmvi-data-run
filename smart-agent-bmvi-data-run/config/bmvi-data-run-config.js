@@ -6,7 +6,7 @@ exports['default'] = {
       ethAccount: '',
       ignoreKeyExchange: false,
       ignoreStoragePayments: true,
-      streamInterval: 1000, // 1 row per second
+      streamInterval: 750, // 1 row per second
       emilies: {
         '0x0000000000000000000000000000000000000002': 'emily_roundtrip.csv',
         '0x0000000000000000000000000000000000000003': 'emily_roundtrip.csv',

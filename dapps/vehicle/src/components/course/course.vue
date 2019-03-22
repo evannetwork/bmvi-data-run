@@ -31,6 +31,10 @@
     <l-map :zoom="config.zoom" :center="config.center">
       <l-tile-layer :url="config.url" :attribution="config.attribution"></l-tile-layer>
       <l-marker :lat-lng="config.marker"></l-marker>
+      <l-polyline
+      :lat-lngs="config.latlngs"
+      :color="'green'">
+      </l-polyline>
     </l-map>
   </div>
 </template>

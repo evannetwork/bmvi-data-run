@@ -36,13 +36,41 @@ import * as dappBrowser from '@evan.network/ui-dapp-browser';
 
 declare let L: any;
 
+import StreamrClient from 'streamr-client';
+
+
 @Component({ })
 export default class CourseComponent extends Vue {
    config = {
-      zoom:13,
-      center: L.latLng(47.413220, -1.219482),
+      zoom:20,
+      lat: 47.413220,
+      lng: -1.219482,
+      center: L.latLng(52.4824840842247, 13.3575149939551),
       url:'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
       attribution:'&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
-      marker: L.latLng(47.413220, -1.219482),
+      marker: L.latLng(52.4824840842247, 13.3575149939551),
+      latlngs: []
     }
+  created() {
+    console.log('created')
+    const client = new StreamrClient({
+      // See below for more options
+      auth: {
+        apiKey: 'JncwonwNSeaFyBiMd5TVugNfNyTVtwTsmTRDIAMbji6Q'
+      }
+    })
+
+    // Create a stream for this example if it doesn't exist
+    client.getOrCreateStream({
+        name: '0x0000000000000000000000000000000000000003',
+    }).then((stream) => {
+      client.subscribe(
+        {stream: stream.id},
+        (message) => {
+          this.config.marker = L.latLng(message.latitude, message.longitude)
+          this.config.latlngs.push([message.latitude, message.longitude])
+        },
+      )
+    })
+  }
 }
