@@ -38,9 +38,9 @@ import * as dappBrowser from '@evan.network/ui-dapp-browser';
 export default class OverviewComponent extends Vue {
   dashboardEntries: Array<any> = [
     {
-      title: 'bmvi',
+      title: 'usecase',
       icon: 'fas fa-info p-4 xxxl text-primary',
-      path: 'bmvi',
+      path: 'usecase',
     },
     {
       title: 'vehicles',

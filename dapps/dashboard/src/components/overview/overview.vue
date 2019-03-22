@@ -29,10 +29,12 @@
   <div>
     <div class="text-center">
       <br>
-      <img class="img-fluid col-6 col-md-3"
-        :src="`${ $store.state.bmviBaseUrl }/assets/data-run.png`">
-      <h3 class="text-secondary m3-t font-weight-bold">{{ '_bmvi.welcome-to-bmvi' | translate }}
+      <h3 class="text-secondary mt-3 font-weight-bold">{{ '_bmvi.welcome-to-bmvi' | translate }}
       </h3>
+
+      <img class="img-fluid col-6 col-md-3 m-3"
+        :src="`${ $store.state.bmviBaseUrl }/assets/data-run.png`">
+
       <h2>{{ '_bmvi.startup' | translate }}</h2>
       <br>
     </div>

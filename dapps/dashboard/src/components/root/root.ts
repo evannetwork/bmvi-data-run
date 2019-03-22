@@ -45,9 +45,6 @@ export default class DashboardRootComponent extends Vue {
    */
   routes = [
     { title: `_bmvi.routes.vehicles`, path: `list`, icon: 'fas fa-car' },
-    // { title: `${ i18nPref }.favorites`, path: `favorites.${ domainName }`, icon: 'fas fa-bookmark' },
-    // { title: `${ i18nPref }.mailbox`, path: `mailbox.${ domainName }`, icon: 'fas fa-envelope' },
-    // { title: `${ i18nPref }.contacts`, path: `addressbook.${ domainName }`, icon: 'fas fa-address-book' },
-    // { title: `${ i18nPref }.profile`, path: `profile.${ domainName }`, icon: 'fas fa-user' },
+    { title: `_bmvi.routes.usecase`, path: `usecase`, icon: 'fas fa-info' },
   ];
 }
