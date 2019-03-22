@@ -1,0 +1,72 @@
+{
+  "approval": true,
+  "carTax": true,
+  "cocData": {
+    "execution": "00",
+    "factoryBrand": "BMW",
+    "type": "S/D",
+    "variant": "DF71"
+  },
+  "evb": "ABC1234",
+  "financing": true,
+  "maintenanceData": [
+    {
+      "date": "1553281501661",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc efficitur turpis elit, a blandit ligula lobortis vel. Phasellus et viverra odio, vel aliquet dolor."
+    }
+  ],
+  "metadata": {
+    "tsn": "BDC",
+    "engine": {
+      "fuel": "petrol",
+      "type": "engine"
+    },
+    "fin": "34-53",
+    "furtherInformation": [
+      {
+        "desc": "Fahrer-Airbag",
+        "id": "34-130"
+      },
+      {
+        "desc": "Kopfstützen hinten ",
+        "id": "34-134"
+      },
+      {
+        "desc": "Kopfstützen vorn",
+        "id": "34-135"
+      },
+      {
+        "desc": "Radio",
+        "id": "34-136"
+      },
+      {
+        "desc": "Servolenkung",
+        "id": "34-142"
+      },
+      {
+        "desc": "Zentralverriegelung",
+        "id": "34-141"
+      }
+    ],
+    "hsn": "928",
+    "identifiers": {
+      "contractNumber": "A100001",
+      "orderNumber": "JFACA"
+    },
+    "modelKeyNumber": "284",
+    "processNumber": "12345-3625",
+    "vehicleSpecific": {
+      "cubicCapacity": "1395",
+      "doors": "4",
+      "kw": "92",
+      "ps": "125"
+    }
+  },
+  "tuev": true,
+  "zb1": {
+    "firstRegistrationDate": "1553281501661"
+  },
+  "zb2": {
+    "registrationNumber": "EV-AN 2018"
+  }
+}
