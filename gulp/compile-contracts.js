@@ -22,7 +22,7 @@ const config = require('../scripts/config/deployment.js').runtimeConfig
 
 const buildFolder = 'build'
 
-// any tasks that depends on evan-access needs to call evan_close at its end
+// any task that depends on evan-access needs to call evan_close at its end
 gulp.task('evan-access', (cb) => {
   evan.init(config)
     .then(() => { cb() })
