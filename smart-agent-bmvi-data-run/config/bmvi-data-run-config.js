@@ -23,6 +23,45 @@ exports['default'] = {
       ethAccount: '',
       ignoreKeyExchange: false,
       ignoreStoragePayments: true,
+      cars: [
+        '0x0000000000000000000000000000000000000002',
+        '0x0000000000000000000000000000000000000003',
+        '0x0000000000000000000000000000000000000004',
+        '0x0000000000000000000000000000000000000005',
+        '0x0000000000000000000000000000000000000006',
+      ]
+    }
+  },
+  smartAgentBmviDataRunBank: (api) => {
+    return {
+      disabled: false,
+      name: 'bmvi-data-run-bank',
+      ethAccount: '',
+      ignoreKeyExchange: false,
+      ignoreStoragePayments: true,
+      cars: [
+        '0x0000000000000000000000000000000000000002',
+        '0x0000000000000000000000000000000000000003',
+        '0x0000000000000000000000000000000000000004',
+        '0x0000000000000000000000000000000000000005',
+        '0x0000000000000000000000000000000000000006',
+      ]
+    }
+  },
+  smartAgentBmviDataRunWorkshop: (api) => {
+    return {
+      disabled: false,
+      name: 'bmvi-data-run-workshop',
+      ethAccount: '',
+      ignoreKeyExchange: false,
+      ignoreStoragePayments: true,
+      cars: [
+        '0x0000000000000000000000000000000000000002',
+        '0x0000000000000000000000000000000000000003',
+        '0x0000000000000000000000000000000000000004',
+        '0x0000000000000000000000000000000000000005',
+        '0x0000000000000000000000000000000000000006',
+      ]
     }
   }
 }

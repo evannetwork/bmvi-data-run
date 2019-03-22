@@ -42,7 +42,11 @@ module.exports = class SmartAgentBmviDataRunInitializerEmily extends Initializer
             setInterval(async () => {
               // pretend, data is from now
               const row = { ...data[cursor], last_seen: Date.now() }
-              await api.streamr.addToStream(streamId, row)
+              try {
+                await api.streamr.addToStream(streamId, row)
+              } catch (ex) {
+
+              }
               if (cursor++ >= data.length) {
                 cursor = 0;
               }
