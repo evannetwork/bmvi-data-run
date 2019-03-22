@@ -28,10 +28,17 @@
 // import evan libs
 import { ComponentRegistrationInterface } from '@evan.network/ui-vue-core';
 
+
+import { LMap, LTileLayer, LMarker } from 'vue2-leaflet';
+
 // export them all, so other applications can access them
 export { }
 
 // map them to element names, so they can be used within templates
-const componentRegistration: Array<ComponentRegistrationInterface> = [ ];
+const componentRegistration: Array<ComponentRegistrationInterface> = [
+  { name: 'l-map', component: LMap },
+  { name: 'l-tile-layer', component: LTileLayer},
+  { name: 'l-marker', component: LMarker}
+];
 
 export default componentRegistration;

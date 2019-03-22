@@ -34,6 +34,15 @@ import { Prop } from 'vue-property-decorator';
 import * as bcc from '@evan.network/api-blockchain-core';
 import * as dappBrowser from '@evan.network/ui-dapp-browser';
 
+declare let L: any;
+
 @Component({ })
 export default class CourseComponent extends Vue {
+   config = {
+      zoom:13,
+      center: L.latLng(47.413220, -1.219482),
+      url:'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
+      attribution:'&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
+      marker: L.latLng(47.413220, -1.219482),
+    }
 }

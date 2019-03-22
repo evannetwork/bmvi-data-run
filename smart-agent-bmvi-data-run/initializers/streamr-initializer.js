@@ -11,9 +11,9 @@ module.exports = class SmartAgentBmvidatarunStreamrInitializer extends Initializ
   constructor() {
     super()
     this.name = 'bmvi-data-run-streamr'
-    this.loadPriority = 4100
-    this.startPriority = 4100
-    this.stopPriority = 4100
+    this.loadPriority = 4000
+    this.startPriority = 4000
+    this.stopPriority = 4000
   }
 
   async initialize() {
@@ -24,21 +24,20 @@ module.exports = class SmartAgentBmvidatarunStreamrInitializer extends Initializ
       }
     })
     // objects and values used outside initializer
-    api.smartAgentBmvidatarunStreamr = this
+    api.streamr = this
   }
 
   /**
    * adds data to a given address stream
    *
-   * @param      {string}   address  ethereum address of the contract
-   * @param      {string}   title    title of the contract
-   * @param      {any}      data     data object to stream
+   * @param      {string}   streamId  The stream identifier
+   * @param      {any}      data      data object to stream
    * @return     {Promise}  resolves when done
    */
-  async addToStream(address, title, data) {
+  async addToStream(streamId, data) {
     return new Promise((resolve, reject) => {
       this.streamrClient.getOrCreateStream({
-          name: `${address}-(${title})`,
+          name: streamId,
       }).then(async (stream) => {
         // send the given data to the stream then resolve
         await stream.publish(data)
