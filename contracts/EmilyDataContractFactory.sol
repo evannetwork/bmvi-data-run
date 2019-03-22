@@ -91,6 +91,18 @@ contract EmilyDataContractFactory is BaseContractFactory {
         roles.setRoleOperationCapability(
             bmviRole, 0, hashPropertyCapability(entryLabel, "carTax", setLabel), true);
 
+        // extra entry properties for import via owner
+        roles.setRoleOperationCapability(
+            ownerRole, 0, hashPropertyCapability(entryLabel, "financing", setLabel), true);
+        roles.setRoleOperationCapability(
+            ownerRole, 0, hashPropertyCapability(entryLabel, "tuev", setLabel), true);
+        roles.setRoleOperationCapability(
+            ownerRole, 0, hashPropertyCapability(entryLabel, "approval", setLabel), true);
+        roles.setRoleOperationCapability(
+            ownerRole, 0, hashPropertyCapability(entryLabel, "evb", setLabel), true);
+        roles.setRoleOperationCapability(
+            ownerRole, 0, hashPropertyCapability(entryLabel, "carTax", setLabel), true);
+
         // lists
         roles.setRoleOperationCapability(
             insuranceRole, 0, hashPropertyCapability(listentryLabel, "maintenanceData", setLabel), true);

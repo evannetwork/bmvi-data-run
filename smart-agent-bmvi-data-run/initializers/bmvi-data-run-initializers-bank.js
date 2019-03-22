@@ -7,10 +7,10 @@ const {
 
 const abiDecoder = require('abi-decoder')
 
-module.exports = class SmartAgentBmvidatarunInsuranceWatcherInitializer extends Initializer {
+module.exports = class SmartAgentBmvidatarunBankWatcherInitializer extends Initializer {
   constructor() {
     super()
-    this.name = 'bmvi-data-run-insurance-watcher'
+    this.name = 'bmvi-data-run-bank-watcher'
     this.loadPriority = 4000
     this.startPriority = 4000
     this.stopPriority = 4000
@@ -22,13 +22,12 @@ module.exports = class SmartAgentBmvidatarunInsuranceWatcherInitializer extends 
     }
 
     // specialize from blockchain smart agent library
-    class SmartAgentBmviDataRunInsurance extends api.smartAgents.SmartAgent {
+    class SmartAgentBmviDataRunBank extends api.smartAgents.SmartAgent {
       async initialize () {
         await super.initialize()
 
         // watch for new repair messages
-        // when the car is financed check if bank approves
-        // then allow the repair
+        // when the car is financed approve
       }
 
       async startEventWatching() {
@@ -76,10 +75,10 @@ module.exports = class SmartAgentBmvidatarunInsuranceWatcherInitializer extends 
     }
 
     // start the initialization code
-    const smartAgentBmviDataRunInsurance = new SmartAgentBmviDataRunInsurance(api.config.smartAgentBmviDataRunInsurance)
-    await smartAgentBmviDataRunInsurance.initialize()
+    const smartAgentBmviDataRunBank = new SmartAgentBmviDataRunBank(api.config.smartAgentBmviDataRunBank)
+    await smartAgentBmviDataRunBank.initialize()
 
     // objects and values used outside initializer
-    api.smartAgentBmviDataRunInsurance = smartAgentBmviDataRunInsurance
+    api.smartAgentBmviDataRunBank = smartAgentBmviDataRunBank
   }
 }
