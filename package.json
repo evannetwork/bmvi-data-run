@@ -2,6 +2,7 @@
   "dependencies": {
     "@evan.network/edge-server-seed": "^1.0.0",
     "csv-parser": "^2.2.0",
+    "eth-lightwallet": "^3.0.1",
     "gulp": "3.9.1",
     "typescript": "^2.9.2",
     "web3": "1.0.0-beta.37"
