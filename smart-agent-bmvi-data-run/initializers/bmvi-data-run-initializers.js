@@ -6,7 +6,7 @@ const {
 } = require('actionhero')
 
 
-module.exports = class SmartAgentBmvidatarunInitializer extends Initializer {
+module.exports = class SmartAgentBmviDataRunInitializer extends Initializer {
   constructor() {
     super()
     this.name = 'bmvi-data-run'
@@ -16,22 +16,22 @@ module.exports = class SmartAgentBmvidatarunInitializer extends Initializer {
   }
 
   async initialize() {
-    if (api.config.smartAgentBmvidatarun.disabled) {
+    if (api.config.smartAgentBmviDataRun.disabled) {
       return
     }
 
     // specialize from blockchain smart agent library
-    class SmartAgentBmvidatarun extends api.smartAgents.SmartAgent {
+    class SmartAgentBmviDataRun extends api.smartAgents.SmartAgent {
       async initialize () {
         await super.initialize()
       }
     }
 
     // start the initialization code
-    const smartAgentBmvidatarun = new SmartAgentBmvidatarun(api.config.smartAgentBmvidatarun)
-    await smartAgentBmvidatarun.initialize()
+    const smartAgentBmviDataRun = new SmartAgentBmviDataRun(api.config.smartAgentBmviDataRun)
+    await smartAgentBmviDataRun.initialize()
 
     // objects and values used outside initializer
-    api.smartAgentBmvidatarun = smartAgentBmvidatarun
+    api.smartAgentBmviDataRun = smartAgentBmviDataRun
   }
 }
