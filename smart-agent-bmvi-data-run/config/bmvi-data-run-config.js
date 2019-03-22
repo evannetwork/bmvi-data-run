@@ -1,19 +1,28 @@
 exports['default'] = {
-  smartAgentBmviDataRun: (api) => {
+  smartAgentBmviDataRunEmily: (api) => {
     return {
       disabled: false,
-      name: 'bmvi-data-run',
+      name: 'bmvi-data-run-emily',
       ethAccount: '',
       ignoreKeyExchange: false,
       ignoreStoragePayments: true,
       streamInterval: 1000, // 1 row per second
       emilies: {
-        '0x0000000000000000000000000000000000000002': '2018_02.csv',
-        '0x0000000000000000000000000000000000000003': '2018_03.csv',
-        '0x0000000000000000000000000000000000000004': '2018_04.csv',
-        '0x0000000000000000000000000000000000000005': '2018_05.csv',
-        '0x0000000000000000000000000000000000000006': '2018_06.csv',
+        '0x0000000000000000000000000000000000000002': 'emily_roundtrip.csv',
+        '0x0000000000000000000000000000000000000003': 'emily_roundtrip.csv',
+        '0x0000000000000000000000000000000000000004': 'emily_roundtrip.csv',
+        '0x0000000000000000000000000000000000000005': 'emily_roundtrip.csv',
+        '0x0000000000000000000000000000000000000006': 'emily_roundtrip.csv',
       }
+    }
+  },
+  smartAgentBmviDataRunInsurance: (api) => {
+    return {
+      disabled: false,
+      name: 'bmvi-data-run-insurance',
+      ethAccount: '',
+      ignoreKeyExchange: false,
+      ignoreStoragePayments: true,
     }
   }
 }
