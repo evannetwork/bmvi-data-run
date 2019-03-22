@@ -25,27 +25,25 @@
   https://evan.network/license/
 */
 
-/* tslint:disable */
-export default {
-  "_bmvi": {
-    "vehicle": {
-      "area": {
-        "coc": "Coc",
-        "metadata": "Metadata",
-        "zb1": "ZB |",
-        "zb2": "ZB ||"
-      },
-      "back-to-list": "Back to fleet overview",
-      "error": "Error",
-      "error-desc": "The data for this vehicle could not be loaded.<br>Please try again.",
-      "nav": {
-        "course": "Course",
-        "detail": "General data",
-        "financing": "Financing",
-        "maintenance": "Repair- / Maintenance-Log"
-      },
-      "title": "Vehicle"
-    }
-  }
-}
-/* tslint:enable */;
+<template>
+  <div class="">
+    <div class="d-flex">
+      <div class="p-3 w-100 text-center border-right border-bottom clickable all-transition"
+        v-for="(area, index) in routes"
+        :class="$route.path.endsWith(area.route) ? 'bg-secondary bg-text-secondary' : 'bg-level-1'"
+        @click="evanNavigate(`detail/${ area.route }`)">
+        {{ `_bmvi.vehicle.area.${ area.route }` | translate }}
+      </div>
+    </div>
+
+    <transition name="fade" mode="out-in">
+      <router-view></router-view>
+    </transition>
+  </div>
+</template>
+
+<script lang="ts">
+  import DetailComponent from './detail.ts';
+  export default DetailComponent;
+</script>
+

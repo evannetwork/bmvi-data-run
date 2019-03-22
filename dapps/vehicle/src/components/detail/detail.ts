@@ -25,27 +25,23 @@
   https://evan.network/license/
 */
 
-/* tslint:disable */
-export default {
-  "_bmvi": {
-    "vehicle": {
-      "area": {
-        "coc": "Coc",
-        "metadata": "Metadata",
-        "zb1": "ZB |",
-        "zb2": "ZB ||"
-      },
-      "back-to-list": "Back to fleet overview",
-      "error": "Error",
-      "error-desc": "The data for this vehicle could not be loaded.<br>Please try again.",
-      "nav": {
-        "course": "Course",
-        "detail": "General data",
-        "financing": "Financing",
-        "maintenance": "Repair- / Maintenance-Log"
-      },
-      "title": "Vehicle"
-    }
-  }
+// vue imports
+import Vue from 'vue';
+import Component from 'vue-class-component';
+import { Prop } from 'vue-property-decorator';
+
+// evan.network imports
+import * as bcc from '@evan.network/api-blockchain-core';
+import * as dappBrowser from '@evan.network/ui-dapp-browser';
+
+import BmviVehicle from '../../bmvi-vehicle';
+
+@Component({ })
+export default class DetailComponent extends Vue {
+  routes = [
+    { 'route': 'metadata', class: 'bg-primary' },
+    { 'route': 'coc', class: 'bg-secondary' },
+    { 'route': 'zb1', class: 'bg-info' },
+    { 'route': 'zb2', class: 'bg-warning' },
+  ]
 }
-/* tslint:enable */;

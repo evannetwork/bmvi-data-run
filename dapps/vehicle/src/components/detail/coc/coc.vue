@@ -26,13 +26,18 @@
 */
 
 <template>
-  <div class="">
-    overview
+  <div class="p-3">
+    <div class="bg-level-1 border p-3">
+      <evan-loading v-if="loading"></evan-loading>
+      <div v-if="!loading">
+        {{ data }}
+      </div>
+    </div>
   </div>
 </template>
 
 <script lang="ts">
-  import OverviewComponent from './overview.ts';
-  export default OverviewComponent;
+  import CocComponent from './coc.ts';
+  export default CocComponent;
 </script>
 

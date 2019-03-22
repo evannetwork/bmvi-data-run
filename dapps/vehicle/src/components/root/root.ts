@@ -34,7 +34,70 @@ import { Prop } from 'vue-property-decorator';
 import * as bcc from '@evan.network/api-blockchain-core';
 import * as dappBrowser from '@evan.network/ui-dapp-browser';
 
+import BmviVehicle from '../../bmvi-vehicle';
+
 @Component({ })
 export default class DashboardRootComponent extends Vue {
-  routes = [ 'overview', 'maintenance', 'financing', 'course' ];
+  /**
+   * show a loading symbol
+   */
+  loading = true;
+
+  /**
+   * Sidebar level 2 routes
+   */
+  routes = [ 'detail', 'maintenance', 'financing', 'course' ];
+
+  /**
+   * Current vehicle class instance bound to the current twin contract address
+   */
+  vehicle = null;
+
+  /**
+   * current vehicle metadata
+   */
+  metadata: any = null;
+
+  /**
+   * user could not load the data
+   */
+  error: any;
+
+  /**
+   * Load contract details, so we can show metadata directly and to show the twin fin in the
+   * sidebar level 2 top.
+   */
+  async loadMetadata() {
+    try {
+      // initialize vehicle
+      this.vehicle = BmviVehicle.getVehicle(
+        (<any>this).getRuntime(),
+        (<any>this).activeDApp().contractAddress
+      );
+
+      // load metadata to show fin
+      this.metadata = await this.vehicle.getEntry('metadata');
+      this.loading = false;
+    } catch (ex) {
+      this.loading = false;
+      this.error = ex;
+      console.error(ex);
+    }
+  }
+
+  /**
+   * Navigates the user back to the twin overview
+   */
+  backToList() {
+    window.location.hash = `/bmvi.${ dappBrowser.getDomainName() }/list`;
+  }
+
+  /**
+   * Is an route currently active?
+   *
+   * @param      {any}  route   The route
+   */
+  isActive(route: any): boolean {
+    return this.$route.path.startsWith(`${ (<any>this).activeDApp().baseHash }/${ route }`);
+  }
 }

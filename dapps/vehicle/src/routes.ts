@@ -28,15 +28,30 @@
 import { RouteRegistrationInterface } from '@evan.network/ui-vue-core';
 import { DAppLoaderComponent } from '@evan.network/ui-vue-core';
 
-import OverviewComponent from './components/overview/overview.vue';
-import MaintenanceComponent from './components/maintenance/maintenance.vue';
-import FinancingComponent from './components/financing/financing.vue';
+import CocComponent from './components/detail/coc/coc.vue';
 import CourseComponent from './components/course/course.vue';
+import DetailComponent from './components/detail/detail.vue';
+import FinancingComponent from './components/financing/financing.vue';
+import MaintenanceComponent from './components/maintenance/maintenance.vue';
+import MetadataComponent from './components/detail/metadata/metadata.vue';
+import Zb1Component from './components/detail/zb1/zb1.vue';
+import Zb2Component from './components/detail/zb2/zb2.vue';
 
 // map them to element names, so they can be used within templates
 const routeRegistration: Array<RouteRegistrationInterface> = [
-  { path: '', redirect: { name: 'vehicle-overview' } },
-  { name: 'vehicle-overview', path: 'overview', component: OverviewComponent },
+  { path: '', redirect: { name: 'vehicle-detail' } },
+  {
+    name: 'vehicle-detail',
+    path: 'detail',
+    component: DetailComponent,
+    children: [
+      { path: '', redirect: { name: 'vehicle-metadata' } },
+      { name: 'vehicle-metadata', path: 'metadata', component: MetadataComponent },
+      { path: 'coc', component: CocComponent },
+      { path: 'zb1', component: Zb1Component },
+      { path: 'zb2', component: Zb2Component },
+    ]
+  },
   { path: 'maintenance', component: MaintenanceComponent },
   { path: 'financing', component: FinancingComponent },
   { path: 'course', component: CourseComponent },

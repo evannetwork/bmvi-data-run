@@ -27,29 +27,63 @@
 
 <template>
   <div class="evan theme-evan">
-    <evan-dapp-wrapper :routes="null">
+    <evan-dapp-wrapper
+      :routes="null"
+      v-on:loggedin="loadMetadata()">
       <template v-slot:content>
-        <transition name="fade" mode="out-in">
-          <router-view></router-view>
-        </transition>
-        <evan-dapp-wrapper-level-2>
-          <template v-slot:content>
-            <div class="p-4">
-              <h5 class="font-weight-bolder">{{ '_dashboard.documentation' | translate }}</h5>
+        <evan-loading v-if="loading"></evan-loading>
+
+        <div class="p-3" v-if="error && !loading">
+          <div class="border bg-level-1">
+            <div class="d-flex p-2 pt-3 pb-3 border-bottom">
+              <h4 class="m-0 ml-3">
+                {{ '_bmvi.vehicle.error' | translate }}
+              </h4>
             </div>
 
-            <ul class="nav small font-medium in w-100 mb-3 mt-auto">
-              <li class="w-100 p-4 clickable d-flex"
-                v-for="(route, index) in routes"
-                :class="{ active: $route.path.endsWith(route) }"
-                @click="evanNavigate(route)">
-                <span>{{ `_bmvi.vehicle.nav.${ route }` | translate }}</span>
-                <span class="mx-auto"></span>
-                <i class="fas fa-chevron-right"></i>
-              </li>
-            </ul>
-          </template>
-        </evan-dapp-wrapper-level-2>
+            <div class="p-3" v-html="$t('_bmvi.vehicle.error-desc')"></div>
+
+            <div class="p-3 mt-3 text-center">
+              <button type="submit" class="btn btn-rounded btn-primary"
+                @click="backToList()">
+                <span>{{ '_bmvi.vehicle.back-to-list' | translate }}</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div v-if="!loading && !error">
+          <transition name="fade" mode="out-in">
+            <router-view></router-view>
+          </transition>
+
+          <evan-dapp-wrapper-level-2>
+            <template v-slot:content>
+              <div class="w300">
+                <div class="d-flex pl-2 pr-4 pt-3 pb-3 align-items-center justify-content-between border-bottom">
+                  <h5 class="font-weight-bolder">
+                    <i class="clickable fas fa-chevron-left mr-3"
+                      @click="backToList()">
+                    </i>
+                    {{ '_bmvi.vehicle.title' | translate }}
+                  </h5>
+                  <h4><b class="text-primary">{{ metadata.fin }}</b></h4>
+                </div>
+
+                <ul class="nav small font-medium in w-100 mb-3 mt-auto">
+                  <li class="w-100 p-4 clickable d-flex"
+                    v-for="(route, index) in routes"
+                    :class="{ 'active': isActive(route) }"
+                    @click="evanNavigate(route)">
+                    <span>{{ `_bmvi.vehicle.nav.${ route }` | translate }}</span>
+                    <span class="mx-auto"></span>
+                    <i class="fas fa-chevron-right"></i>
+                  </li>
+                </ul>
+              </div>
+            </template>
+          </evan-dapp-wrapper-level-2>
+        </div>
       </template>
     </evan-dapp-wrapper>
   </div>

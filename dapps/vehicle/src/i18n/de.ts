@@ -29,12 +29,22 @@
 export default {
   "_bmvi": {
     "vehicle": {
+      "area": {
+        "coc": "Coc",
+        "metadata": "Metadaten",
+        "zb1": "ZB |",
+        "zb2": "ZB ||"
+      },
+      "back-to-list": "Zurück zur Flottenübersicht",
+      "error": "Fehler",
+      "error-desc": "Die Daten für diese Fahrzeug konnten nicht geladen werden.<br>Bitte versuchen Sie es erneut.",
       "nav": {
         "course": "Fahrroute",
+        "detail": "Generelle Daten",
         "financing": "Finanzierung",
-        "maintenance": "Reperatur- / Wartungsprotokoll",
-        "overview": "Übersicht"
-      }
+        "maintenance": "Reperatur- / Wartungsprotokoll"
+      },
+      "title": "Fahrzeug"
     }
   }
 }

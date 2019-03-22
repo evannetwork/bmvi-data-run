@@ -28,6 +28,11 @@
 /* tslint:disable */
 export default {
   "_bmvi": {
+    "list": {
+      "factoryBrand": "Fabrikmarke",
+      "fin": "FIN",
+      "variant": "Variante"
+    },
     "overview": {
       "usecase": {
         "desc": "Randinformationen des Use Cases und verwendete Daten",

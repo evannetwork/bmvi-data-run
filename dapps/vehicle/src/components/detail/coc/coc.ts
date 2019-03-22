@@ -34,6 +34,37 @@ import { Prop } from 'vue-property-decorator';
 import * as bcc from '@evan.network/api-blockchain-core';
 import * as dappBrowser from '@evan.network/ui-dapp-browser';
 
+import BmviVehicle from '../../../bmvi-vehicle';
+
 @Component({ })
-export default class OverviewComponent extends Vue {
+export default class CocComponent extends Vue {
+  /**
+   * show the loading indicator
+   */
+  loading = true;
+
+  /**
+   * Current vehicle instance.
+   */
+  vehicle: any;
+
+  /**
+   * specific vehicle data area
+   */
+  data: any = null;
+
+  /**
+   * Load initial data for the twin
+   */
+  async created() {
+      // initialize vehicle
+    this.vehicle = BmviVehicle.getVehicle(
+      (<any>this).getRuntime(),
+      (<any>this).activeDApp().contractAddress
+    );
+
+    // load metadata to show fin
+    this.data = await this.vehicle.getEntry('cocData');
+    this.loading = false;
+  }
 }

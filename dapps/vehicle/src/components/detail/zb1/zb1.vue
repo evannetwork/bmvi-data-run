@@ -25,27 +25,19 @@
   https://evan.network/license/
 */
 
-/* tslint:disable */
-export default {
-  "_bmvi": {
-    "vehicle": {
-      "area": {
-        "coc": "Coc",
-        "metadata": "Metadata",
-        "zb1": "ZB |",
-        "zb2": "ZB ||"
-      },
-      "back-to-list": "Back to fleet overview",
-      "error": "Error",
-      "error-desc": "The data for this vehicle could not be loaded.<br>Please try again.",
-      "nav": {
-        "course": "Course",
-        "detail": "General data",
-        "financing": "Financing",
-        "maintenance": "Repair- / Maintenance-Log"
-      },
-      "title": "Vehicle"
-    }
-  }
-}
-/* tslint:enable */;
+<template>
+  <div class="p-3">
+    <div class="bg-level-1 border p-3">
+      <evan-loading v-if="loading"></evan-loading>
+      <div v-if="!loading">
+        {{ data }}
+      </div>
+    </div>
+  </div>
+</template>
+
+<script lang="ts">
+  import MetadataComponent from './zb1.ts';
+  export default MetadataComponent;
+</script>
+

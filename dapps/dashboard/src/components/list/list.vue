@@ -40,18 +40,27 @@
         <table class="table table-borderless table-hover mt-3">
           <thead>
             <tr>
-              <th>a</th>
-              <th>b</th>
-              <th>c</th>
+              <th>{{ '_bmvi.list.fin' | translate }}</th>
+              <th>{{ '_bmvi.list.factoryBrand' | translate }}</th>
+              <th>{{ '_bmvi.list.variant' | translate }}</th>
             </tr>
           </thead>
           <tbody>
             <tr class="clickable"
               v-for="(vehicle, index) in vehicles"
               @click="openVehicle(vehicle)">
-              <td>{{ vehicle.a }}</td>
-              <td>{{ vehicle.b }}</td>
-              <td>{{ vehicle.c }}</td>
+              <template v-if="vehicle.loading">
+                <th class="text-primary">
+                 <div class="spinner-border text-secondary"></div>
+               </th>
+                <td></td>
+                <td></td>
+              </template>
+              <template v-if="!vehicle.loading">
+                <th class="text-primary">{{ vehicle.metadata.fin }}</th>
+                <td>{{ vehicle.cocData.factoryBrand }}</td>
+                <td>{{ vehicle.cocData.variant }}</td>
+              </template>
             </tr>
           </tbody>
         </table>

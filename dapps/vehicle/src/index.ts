@@ -32,6 +32,7 @@ import Main from './components/root/root.vue';
 import translations from './i18n/translations';
 import routes from './routes';
 import components from './components/registry';
+import BmviVehicle from './bmvi-vehicle';
 
 
 /**
@@ -56,4 +57,8 @@ export async function startDApp(container: any, dbcpName: any, dappEnsOrContract
     translations: translations,
     Vue: Vue,
   });
+}
+
+export {
+  BmviVehicle
 }
