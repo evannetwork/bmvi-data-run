@@ -1,0 +1,51 @@
+{
+  "approval": true,
+  "carTax": true,
+  "cocData": {
+    "execution": "00",
+    "factoryBrand": "BMW",
+    "type": "S/D",
+    "variant": "DF71"
+  },
+  "evb": "ABC1234",
+  "financing": false,
+  "maintenanceData": [
+    {
+      "date": "1553281501661",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc efficitur turpis elit, a blandit ligula lobortis vel. Phasellus et viverra odio, vel aliquet dolor."
+    }
+  ],
+  "metadata": {
+    "tsn": "Autonom",
+    "engine": {
+      "fuel": "electro",
+      "type": "engine"
+    },
+    "fin": "emily",
+    "furtherInformation": [
+      {
+        "desc": "6 Sitze",
+        "id": "34-998"
+      },
+      {
+        "desc": "6 Airbags",
+        "id": "34-999"
+      }
+    ],
+    "hsn": "easymile",
+    "identifiers": {
+      "orderNumber": "JFGCG",
+    },
+    "modelKeyNumber": "Easy",
+    "processNumber": "12345-3631",
+    "vehicleSpecific": {
+    }
+  },
+  "tuev": true,
+  "zb1": {
+    "firstRegistrationDate": "1553281501661"
+  },
+  "zb2": {
+    "registrationNumber": "EV-AN 2018"
+  }
+}

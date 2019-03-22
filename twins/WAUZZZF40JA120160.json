@@ -1,0 +1,55 @@
+{
+  "approval": true,
+  "carTax": true,
+  "cocData": {
+    "execution": "00",
+    "factoryBrand": "BMW",
+    "type": "S/D",
+    "variant": "DF71"
+  },
+  "evb": "ABC1234",
+  "financing": false,
+  "maintenanceData": [
+    {
+      "date": "1553281501661",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc efficitur turpis elit, a blandit ligula lobortis vel. Phasellus et viverra odio, vel aliquet dolor."
+    }
+  ],
+  "metadata": {
+    "tsn": "BLZ",
+    "engine": {
+      "fuel": "petrol",
+      "type": "engine"
+    },
+    "fin": "WAUZZZF40JA120160",
+    "furtherInformation": [
+      {
+        "desc": "4 Sitze",
+        "id": "34-998"
+      },
+      {
+        "desc": "4 Airbags",
+        "id": "34-999"
+      }
+    ],
+    "hsn": "588",
+    "identifiers": {
+      "orderNumber": "JFICI",
+    },
+    "modelKeyNumber": "8W5BAY",
+    "processNumber": "12345-3633",
+    "vehicleSpecific": {
+      "cubicCapacity": "19684",
+      "doors": "4",
+      "kw": "185",
+      "ps": "252"
+    }
+  },
+  "tuev": true,
+  "zb1": {
+    "firstRegistrationDate": "1553281501661"
+  },
+  "zb2": {
+    "registrationNumber": "EV-AN 2018"
+  }
+}

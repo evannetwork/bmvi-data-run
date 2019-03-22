@@ -1,0 +1,79 @@
+{
+  "approval": true,
+  "carTax": true,
+  "cocData": {
+    "execution": "00",
+    "factoryBrand": "BMW",
+    "type": "S/D",
+    "variant": "DF71"
+  },
+  "evb": "ABC1234",
+  "financing": true,
+  "maintenanceData": [
+    {
+      "date": "1553281501661",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc efficitur turpis elit, a blandit ligula lobortis vel. Phasellus et viverra odio, vel aliquet dolor."
+    }
+  ],
+  "metadata": {
+    "tsn": "BLZ",
+    "engine": {
+      "fuel": "petrols",
+      "type": "engine"
+    },
+    "fin": "34-514",
+    "furtherInformation": [
+      {
+        "desc": "Fahrer-Airbag",
+        "id": "34-130"
+      },
+      {
+        "desc": "Beifahrer-Airbag",
+        "id": "34-128"
+      },
+      {
+        "desc": "Geteilte Rücksitzbank",
+        "id": "34-693"
+      },
+      {
+        "desc": "Kopfstützen vorn ",
+        "id": "34-135"
+      },
+      {
+        "desc": "Kopfstützen hinten ",
+        "id": "34-134"
+      },
+      {
+        "desc": "Radio",
+        "id": "34-136"
+      },
+      {
+        "desc": "Servolenkung",
+        "id": "34-142"
+      },
+      {
+        "desc": "Zentralverriegelung",
+        "id": "34-141"
+      }
+    ],
+    "hsn": "3001",
+    "identifiers": {
+      "orderNumber": "JFBCC"
+    },
+    "modelKeyNumber": "600",
+    "processNumber": "12345-3627",
+    "vehicleSpecific": {
+      "cubicCapacity": "1984",
+      "doors": "4",
+      "kw": "185",
+      "ps": "252"
+    }
+  },
+  "tuev": true,
+  "zb1": {
+    "firstRegistrationDate": "1553281501661"
+  },
+  "zb2": {
+    "registrationNumber": "EV-AN 2018"
+  }
+}
