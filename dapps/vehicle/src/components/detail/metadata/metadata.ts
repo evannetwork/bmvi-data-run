@@ -49,6 +49,21 @@ export default class MetadataComponent extends Vue {
   vehicle: any;
 
   /**
+   * Wait for blockchain transactions
+   */
+  syncing = false;
+
+  /**
+   * current logged in user
+   */
+  activeAccount = dappBrowser.core.activeAccount();
+
+  /**
+   * current registration status
+   */
+  registration = false;
+
+  /**
    * Load initial data for the twin
    */
   async created() {
@@ -60,6 +75,29 @@ export default class MetadataComponent extends Vue {
 
     // load metadata to show fin
     await this.vehicle.getEntry('metadata');
+
+    this.registration = await (<any>this).getRuntime().dataContract.getEntry(
+      (<any>this).activeDApp().contractAddress,
+      'approval',
+      this.activeAccount
+    );
+
     this.loading = false;
+  }
+
+  /**
+   * toggle the registration
+   */
+  async setRegistration() {
+    this.syncing = true;
+
+    this.registration = !this.registration;
+    await (<any>this).getRuntime().dataContract.setEntry(
+      (<any>this).activeDApp().contractAddress,
+      'approval',
+      this.registration,
+      this.activeAccount
+    )
+    this.syncing = false;
   }
 }

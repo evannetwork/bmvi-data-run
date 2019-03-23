@@ -74,8 +74,13 @@ export default class ListComponent extends Vue {
       twin.loading = true;
       Promise.resolve().then(async () => {
         try {
-          await twin.getEntry('metadata');
           await twin.getEntry('cocData');
+        } catch (ex) {
+          console.error(ex);
+        }
+
+        try {
+          await twin.getEntry('metadata');
         } catch (ex) {
           twin.error = ex;
           console.error(ex);

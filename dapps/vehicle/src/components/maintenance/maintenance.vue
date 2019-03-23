@@ -28,44 +28,68 @@
 <template>
   <div>
     <div class="bg-level-1 border p-3 m-3">
-      <div class="d-flex pb-3 border-bottom align-items-center">
-        <h4 class="m-0">
-          {{ `_bmvi.vehicle.nav.maintenance` | translate }}
-        </h4>
-        <div class="mx-auto"></div>
-        <button type="submit" class="btn btn-rounded btn-primary d-flex align-items-center"
-          @click="reportDamage()"
-          :disabled="syncing">
-          <div class="spinner-border spinner-border-sm text-light mr-3"
-            v-if="syncing">
-          </div>
-          <span>{{ '_bmvi.vehicle.set-repair' | translate }}</span>
-        </button>
-      </div>
-      <div class="d-flex pb-3 pt-3 border-bottom align-items-center">
-        <h4 class="m-0">
-          {{ `_bmvi.vehicle.nav.registration` | translate }}
-        </h4>
-        <div class="mx-auto"></div>
-        <button type="submit" class="btn btn-rounded btn-primary d-flex align-items-center"
-          @click="setRegistration()"
-          :disabled="syncing">
-          <div class="spinner-border spinner-border-sm text-light mr-3"
-            v-if="syncing">
-          </div>
-          <span>{{ '_bmvi.vehicle.set-registration' | translate }}</span>
-        </button>
-      </div>
-      <table class="table table-borderless mt-3">
-        <tbody>
-          <tr
-            v-for="(field, index) in vehicle.maintenanceData">
-            <td>{{ field }}</td>
-            <td>{{ field.date }}</td>
-            <td>{{ field.description }}</td>
-          </tr>
-        </tbody>
-      </table>
+      <evan-loading v-if="loading"></evan-loading>
+      <template v-if="!loading">
+        <div class="d-flex pb-3 border-bottom align-items-center">
+          <h4 class="m-0">
+            {{ `_bmvi.vehicle.nav.maintenance` | translate }}
+          </h4>
+          <div class="mx-auto"></div>
+          <templace v-if="activeAccount === '0x0Ed0a2610034f0214BBBC43d6e4113E1eD4e3C19'">
+            <evan-modal ref="submitModal">
+              <template v-slot:header>
+                <h5 class="modal-title">
+                  {{ '_bmvi.vehicle.set-repair.question' | translate }}
+                </h5>
+              </template>
+              <template v-slot:body>
+                <p>{{ '_bmvi.vehicle.set-repair.question-desc' | translate }}</p>
+              </template>
+              <template v-slot:footer>
+                <button type="button" class="btn btn-rounded btn-danger font-weight-normal"
+                  @click="reportDamage(); $refs.submitModal.hideModal()">
+                  {{ `_bmvi.vehicle.set-repair.title` | translate }}
+                </button>
+              </template>
+            </evan-modal>
+            <button type="submit" class="btn btn-rounded btn-danger d-flex align-items-center"
+              @click="$refs.submitModal.showModal()"
+              :disabled="syncing">
+              <div class="spinner-border spinner-border-sm text-light mr-3"
+                v-if="syncing">
+              </div>
+              <span>{{ '_bmvi.vehicle.set-repair.title' | translate }}</span>
+            </button>
+          </templace>
+        </div>
+        <table class="table table-borderless mt-3">
+          <thead>
+            <tr>
+              <th>{{ '_bmvi.vehicle.maintenance.id' | translate }}</th>
+              <th>{{ '_bmvi.vehicle.maintenance.description' | translate }}</th>
+              <th>{{ '_bmvi.vehicle.maintenance.status' | translate }}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              v-for="value in maintenanceData">
+              <td>{{ value.reference }}</td>
+              <td class="d-flex">
+                <span>{{ value.description }}</span>
+              </td>
+              <td>
+                <ul class="list-unstyled">
+                  <li v-for="(status, index) in [ 'bankApproved', 'insuraceApproved', 'maintenanceApproved' ]">
+                    <i class="mr-3 fas fa-check text-success" style="width: 16px" v-if="value[status]"></i>
+                    <i class="mr-3 fas fa-times text-danger" style="width: 16px" v-if="!value[status]"></i>
+                    {{ `_bmvi.vehicle.maintenance.${ status }` | translate }}
+                  </li>
+                </ul>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </template>
     </div>
   </div>
 </template>

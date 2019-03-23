@@ -5,23 +5,23 @@ const defaultConfig = {
 }
 
 const carFiles = {
-  '0xDDB1b4BA8A021b3AE1Faab6b70D17e58e6c552cf': 'emily_roundtrip.csv',
-  '0x95A592898b86f48054Ff0A8A54440d6BA31b6fcA': 'emily_roundtrip.csv',
-  '0x504c1516396EC6Daa0ebDb2922cCC4260a99AAf1': 'emily_roundtrip.csv',
-  '0x9520290Be0B87B92469d728b70CC368372bcCc86': 'emily_roundtrip.csv',
-  '0x294680C2d611F715Ebe4C0602397dc1d8bDB0Bf9': 'emily_roundtrip.csv',
-  '0xA11F93ba54212BB0f6291fDF58383451E979f660': 'emily_roundtrip.csv',
-  '0x75b74574E01Eb95e65BF6CbD90539c1Ea037AD2A': 'emily_roundtrip.csv',
-  '0xe0cEEAa1D38FC609b2451CD7611dE497dda08fa3': 'emily_roundtrip.csv',
-  '0x6C2BBbd12cF139be74a7B7BCa8c50DCA843f99Ae': 'emily_roundtrip.csv',
-  '0xABC5D75692e792C83d29b8D1CD56F6DEFA766D31': 'emily_roundtrip.csv'
+  "0xCAaE66c7bBc8CfD96832a2B064Def032912DB005": 'emily_roundtrip.csv',
+  "0x26f264A0C290FD01047D8e07DF9e4a5Fd3263601": 'emily_roundtrip.csv',
+  "0x36255C016c35123b226Ad8c5A4BD131aF765F6c7": 'emily_roundtrip.csv',
+  "0x19531f172C8e217BbEdE910B76cD672cd3F5b355": 'emily_roundtrip.csv',
+  "0x63EACF3FC4bE1fc812c2DEF4DB5572dd30eaFDE6": 'emily_roundtrip.csv',
+  "0xBBb7C3311840AD48EDCE6B846A84c35eeff008e3": 'emily_roundtrip.csv',
+  "0x4c99C9b06FE9E05CAe45D4eF03CC21A5de15deef": 'emily_roundtrip.csv',
+  "0x87604D997fa74633e5BE286d69498B4BD3723620": 'emily_roundtrip.csv',
+  "0x15602aE48526E54f0fD9fAe18EE45B7987a47039": 'emily_roundtrip.csv',
+  "0x8DBC0A73C31CD952d5483495E6C97EbFb58eB349": 'emily_roundtrip.csv'
  }
 
 exports['default'] = {
 
   ethAccounts: {
-    // emily / bmvi
-    "0xaDb25397Fe94968a22fE1b353290eFfB7c847a8F": "60090be3fdac8259c700b07091b14570dd19fc2b5bdff8898e3d8fa4e5221098",
+    // emily / ownwer
+    "0x0Ed0a2610034f0214BBBC43d6e4113E1eD4e3C19": "376b09751ade01cb0e0d2221061d1404fbf3f771927bee52692a1742e83612ff",
     // maintenance
     "0x1D562a307dF7CB1D28F59E834669eFcc7dE2E4Fc": "46a9e3f48366eb751718ef38dcd1ad3cdec530f2671e00323eb0d636478730a1",
     // bank
@@ -31,9 +31,9 @@ exports['default'] = {
   },
 
   encryptionKeys: {
-    // emily / bmvi
-    "0xb9f7cd2b202c009d574f4b7a5c0b3b85fd8affc1f46aea0d2e54783062daeb09": "acf87a5a53b228f282be7435ad027c6d3a24046bc33a39d851221f2680d95625",
-    "0xa1dc85a4bcd208c572702d1538e5587e666581aa1568818dcc5b447110536840": "acf87a5a53b228f282be7435ad027c6d3a24046bc33a39d851221f2680d95625",
+    // emily / owner
+    "0x4637f94d46f0d68b85d0172a198dca14c48c155c8fa64113437f331a008968ad": "0e2e9ae57c36647f3b4bd8c7bb591bcc3894e444a06e71e56aab7cc040f35a30",
+    "0x8299896298e6968ca9ff9096110bc04ed9556169a63d8a44600109d006958753": "0e2e9ae57c36647f3b4bd8c7bb591bcc3894e444a06e71e56aab7cc040f35a30",
     // maintenance
     "0xd97f754e4b22a7065a1f7819d4cd9eb62e9d6fadc7593211e67bf599215294c2": "add7c7d492267cd86815be8145058c403be89150d86bbc3bf09a87c5644630c8",
     "0x12cd43ab9988cd75c66c31fe7329cbd777fb87f183434a6ca293ec6a542532ee": "add7c7d492267cd86815be8145058c403be89150d86bbc3bf09a87c5644630c8",
@@ -49,10 +49,14 @@ exports['default'] = {
     return {
       ...defaultConfig,
       name: 'bmvi-data-run-emily',
-      ethAccount: '0xaDb25397Fe94968a22fE1b353290eFfB7c847a8F',
+      ethAccount: '0x0Ed0a2610034f0214BBBC43d6e4113E1eD4e3C19',
       streamInterval: 750, // 0.75 rows per second
       appvovalCheckInterval: 10000, // check every 10 seconds
-      emilies: carFiles
+      emilies: carFiles,
+      maintenanceFadeInterval: 1000,
+      maintenanceFadeStep: 0.05,
+      maintenanceX: 13.3572160165073,
+      maintenanceY: 52.4821613008757,
     }
   },
   smartAgentBmviDataRunInsurance: (api) => {

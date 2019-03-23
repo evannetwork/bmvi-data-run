@@ -23,13 +23,17 @@ module.exports = class SmartAgentBmvidatarunBankWatcherInitializer extends Initi
 
     // specialize from blockchain smart agent library
     class SmartAgentBmviDataRunBank extends api.smartAgents.SmartAgent {
+      /**
+       * initialize smart agent and create runtime
+       *
+       * @return     {Promise}  resolved when done
+       */
       async initialize () {
         await super.initialize()
         this.approvals = {}
       }
 
       async startEventWatching() {
-
         this.managedTwins = api.config.smartAgentBmviDataRunInsurance.cars || []
         // add DataContract abi to decoder
         abiDecoder.addABI(JSON.parse(this.runtime.contractLoader.contracts.DataContract.interface))
@@ -49,22 +53,11 @@ module.exports = class SmartAgentBmvidatarunBankWatcherInitializer extends Initi
                     this.runtime.nameResolver.soliditySha3('maintenanceData')) {
                   // retrieve all entries, starting with newest entry
                   const entries = await this.runtime.dataContract.getListEntries(
-                    tx.to,
-                    'maintenanceData',
-                    this.config.ethAccount,
-                    true,
-                    true,
-                    10,
-                    0,
-                    true,
-                  )
-
+                    tx.to, 'maintenanceData', this.config.ethAccount, true, true, 10, 0, true)
+                  // get financed status
                   const financed = await this.runtime.dataContract.getEntry(
-                    tx.to,
-                    'financing',
-                    this.config.ethAccount
-                  )
-
+                    tx.to, 'financing', this.config.ethAccount)
+                  // keep only requests (only requests have the property 'description')
                   const requests = entries.filter(entry => entry.description)
                   if (requests.length && financed) {
                     const reference = requests[0].reference
@@ -78,7 +71,6 @@ module.exports = class SmartAgentBmvidatarunBankWatcherInitializer extends Initi
                         [ { reference, bankApproved: true } ],
                         this.config.ethAccount,
                       )
-
                     }
                   }
                 }

@@ -36,7 +36,10 @@ import * as dappBrowser from '@evan.network/ui-dapp-browser';
 
 @Component({ })
 export default class FinancingComponent extends Vue {
-
+  /**
+   * load initial data
+   */
+  loading = true;
 
   /**
    * Wait for blockchain transactions
@@ -44,22 +47,37 @@ export default class FinancingComponent extends Vue {
   syncing = false;
 
   /**
+   * current finance status
+   */
+  financing: boolean;
+
+  /**
+   * current logged in user
+   */
+  activeAccount = dappBrowser.core.activeAccount();
+
+  async created() {
+    this.financing = await (<any>this).getRuntime().dataContract.getEntry(
+      (<any>this).activeDApp().contractAddress,
+      'financing',
+      this.activeAccount
+    );
+
+    this.loading = false;
+  }
+
+  /**
    * toggle the financing
    */
   async setFinancing() {
-    const runtime = (<any>this).getRuntime();
     this.syncing = true;
-    const financing = await runtime.dataContract.getEntry(
-      (<any>this).activeDApp().contractAddress,
-      'financing',
-      dappBrowser.core.activeAccount()
-    );
 
-    await runtime.dataContract.setEntry(
+    this.financing = !this.financing;
+    await (<any>this).getRuntime().dataContract.setEntry(
       (<any>this).activeDApp().contractAddress,
       'financing',
-      !financing,
-      dappBrowser.core.activeAccount()
+      this.financing,
+      this.activeAccount
     )
     this.syncing = false;
   }
