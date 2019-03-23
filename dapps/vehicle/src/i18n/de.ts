@@ -47,7 +47,8 @@ export default {
         "engine": "Motor",
         "fuel": "Kraftstoff",
         "title": "Motor",
-        "type": "Typ"
+        "type": "Typ",
+        "petrols": "Benzin"
       },
       "error": "Fehler",
       "error-desc": "Die Daten für diese Fahrzeug konnten nicht geladen werden.<br>Bitte versuchen Sie es erneut.",
@@ -79,7 +80,8 @@ export default {
         "id": "ID",
         "insuraceApproved": "Versicherung",
         "maintenanceApproved": "Werkstatt",
-        "status": "Freigabe"
+        "status": "Freigabe",
+        "maintenanceFinished": "Reperatur abgeschlossen"
       },
       "nav": {
         "course": "Fahrroute",
@@ -103,6 +105,11 @@ export default {
         "question": "Schaden melden",
         "question-desc": "Wollen Sie wirklich einen Schaden melden?",
         "title": "Schaden melden"
+      },
+      "finish-maintenance": {
+        "question": "Reperatur beenden",
+        "question-desc": "Wollen Sie wirklich die Reperatur beenden?",
+        "title": "Reperatur beenden"
       },
       "finish-repair": "Reparatur abschließen",
       "title": "Fahrzeug",

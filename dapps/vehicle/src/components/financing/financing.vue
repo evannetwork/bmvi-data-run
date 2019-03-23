@@ -31,7 +31,7 @@
       <evan-loading v-if="loading"></evan-loading>
       <template v-if="!loading">
         <div class="d-flex pb-3 pt-3 border-bottom align-items-center">
-          <h4 class="m-0">
+          <h4 class="m-0 mb-2">
             {{ `_bmvi.vehicle.nav.financing` | translate }}
           </h4>
         </div>

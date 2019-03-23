@@ -47,7 +47,8 @@ export default {
         "engine": "Engine",
         "fuel": "Fuel",
         "title": "Engine",
-        "type": "Type"
+        "type": "Type",
+        "petrols": "Petrol"
       },
       "error": "Error",
       "error-desc": "The data for this vehicle could not be loaded.<br>Please try again.",
@@ -79,7 +80,8 @@ export default {
         "id": "ID",
         "insuraceApproved": "Insurance",
         "maintenanceApproved": "Maintenance",
-        "status": "Release-State"
+        "status": "Release-State",
+        "maintenanceFinished": "Maintenance finished"
       },
       "nav": {
         "course": "Course",
@@ -103,6 +105,11 @@ export default {
         "question": "Report a damage",
         "question-desc": "Do you really want to report a damage?",
         "title": "Report a damage"
+      },
+      "finish-maintenance": {
+        "question": "Finish maintenance",
+        "question-desc": "Do you really want to finish the maintenance?",
+        "title": "Finish maintenance"
       },
       "finish-repair": "Finish repair",
       "title": "Vehicle",

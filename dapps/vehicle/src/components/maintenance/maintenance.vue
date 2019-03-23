@@ -35,7 +35,7 @@
             {{ `_bmvi.vehicle.nav.maintenance` | translate }}
           </h4>
           <div class="mx-auto"></div>
-          <templace v-if="activeAccount === '0x0Ed0a2610034f0214BBBC43d6e4113E1eD4e3C19'">
+          <templace v-if="activeAccount === '0x1D562a307dF7CB1D28F59E834669eFcc7dE2E4Fc'">
             <evan-modal ref="submitModal">
               <template v-slot:header>
                 <h5 class="modal-title">
@@ -52,7 +52,7 @@
                 </button>
               </template>
             </evan-modal>
-            <button type="submit" class="btn btn-rounded btn-danger d-flex align-items-center"
+            <button type="submit" class="btn btn-rounded btn-danger d-flex align-items-center mr-3"
               @click="$refs.submitModal.showModal()"
               :disabled="syncing">
               <div class="spinner-border spinner-border-sm text-light mr-3"
@@ -68,23 +68,47 @@
               <th>{{ '_bmvi.vehicle.maintenance.id' | translate }}</th>
               <th>{{ '_bmvi.vehicle.maintenance.description' | translate }}</th>
               <th>{{ '_bmvi.vehicle.maintenance.status' | translate }}</th>
+              <th v-if="activeAccount === '0x1D562a307dF7CB1D28F59E834669eFcc7dE2E4Fc'"></th>
             </tr>
           </thead>
           <tbody>
             <tr
-              v-for="value in maintenanceData">
+              v-for="(value, index) in maintenanceData">
               <td>{{ value.reference }}</td>
               <td class="d-flex">
                 <span>{{ value.description }}</span>
               </td>
               <td>
                 <ul class="list-unstyled">
-                  <li v-for="(status, index) in [ 'bankApproved', 'insuraceApproved', 'maintenanceApproved' ]">
+                  <li v-for="(status, index) in [ 'bankApproved', 'insuraceApproved', 'maintenanceApproved', 'maintenanceFinished' ]">
                     <i class="mr-3 fas fa-check text-success" style="width: 16px" v-if="value[status]"></i>
                     <i class="mr-3 fas fa-times text-danger" style="width: 16px" v-if="!value[status]"></i>
                     {{ `_bmvi.vehicle.maintenance.${ status }` | translate }}
                   </li>
                 </ul>
+              </td>
+              <td class="text-right"
+                v-if="activeAccount === '0x1D562a307dF7CB1D28F59E834669eFcc7dE2E4Fc' && !value.maintenanceFinished && !syncing">
+                <evan-modal ref="finishMaintenance">
+                  <template v-slot:header>
+                    <h5 class="modal-title">
+                      {{ '_bmvi.vehicle.finish-maintenance.question' | translate }}
+                    </h5>
+                  </template>
+                  <template v-slot:body>
+                    <p>{{ '_bmvi.vehicle.finish-maintenance.question-desc' | translate }}</p>
+                  </template>
+                  <template v-slot:footer>
+                    <button type="button" class="btn btn-rounded btn-success font-weight-normal"
+                      @click="finishMaintenance(value.reference); $refs.finishMaintenance[index].hideModal()">
+                      {{ `_bmvi.vehicle.finish-maintenance.title` | translate }}
+                    </button>
+                  </template>
+                </evan-modal>
+                <button type="submit" class="btn btn-rounded btn-outline-success icon-only"
+                  @click="$refs.finishMaintenance[index].showModal()">
+                  <i class="fas fa-check"></i>
+                </button>
               </td>
             </tr>
           </tbody>

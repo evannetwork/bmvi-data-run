@@ -61,13 +61,15 @@
             <template v-slot:content>
               <div class="w300">
                 <div class="d-flex pl-2 pr-4 pt-3 pb-3 align-items-center justify-content-between border-bottom">
-                  <h5 class="font-weight-bolder">
+                  <h5 class="font-weight-bolder text-nowrap mr-3">
                     <i class="clickable fas fa-chevron-left mr-3"
                       @click="backToList()">
                     </i>
                     {{ '_bmvi.vehicle.title' | translate }}
                   </h5>
-                  <h4><b class="text-primary">{{ metadata.fin }}</b></h4>
+                  <h4 class="text-truncate">
+                    <b class="text-primary">{{ metadata.fin }}</b>
+                  </h4>
                 </div>
 
                 <ul class="nav small font-medium in w-100 mb-3 mt-auto">
