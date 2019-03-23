@@ -95,7 +95,22 @@ export default class MaintenanceComponent extends Vue {
     await runtime.dataContract.addListEntries(
       (<any>this).activeDApp().contractAddress,
       'maintenanceData',
-      [{description: 'Auto ist kaputt', reference: Date.now()}],
+      [{description: 'Auto ist kaputt', reference: Date.now(), maintenanceApproved: true}],
+      this.activeAccount
+    )
+    this.syncing = false;
+  }
+
+  /**
+   * Finish a maintenance
+   */
+  async finishMaintenance() {
+    const runtime = (<any>this).getRuntime();
+    this.syncing = true;
+    await runtime.dataContract.addListEntries(
+      (<any>this).activeDApp().contractAddress,
+      'maintenanceData',
+      [{maintenanceFinished: true}],
       this.activeAccount
     )
     this.syncing = false;

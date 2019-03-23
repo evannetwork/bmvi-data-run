@@ -13,10 +13,21 @@ For example a damage is registered on the car, it travels automatically to the m
 All these different stakeholders have their own view to the data of the vehicle and the owner of the car has the data sovereignty of the registered data of his vehicle.
 
 # Screenshots (of the live application)
+- Overview of the vehicle fleet of the owner
 
+- Detailed vehicle data
+
+- Maintenance history of the vehicle
+
+- Live data streaming of the current vehicle position
 
 # Team
 Anja Wilde - Project lead and good fairy
 Sebastian Dechant - Concept and organization
 Sebastian Wolfram - Backend and Smart Contract wizard
 Tobias Winkler - Frontent voodoo priest
+
+# More informations about evan.network
+https://evan.network
+https://evannetwork.github.io
+https://dashboard.test.evan.network
