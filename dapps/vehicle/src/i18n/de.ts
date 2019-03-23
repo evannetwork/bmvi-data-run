@@ -60,9 +60,12 @@ export default {
         "course": "Fahrroute",
         "detail": "Generelle Daten",
         "financing": "Finanzierung",
-        "maintenance": "Reperatur- / Wartungsprotokoll"
+        "maintenance": "Reperatur- / Wartungsprotokoll",
+        "registration": "Zulassung"
       },
       "set-repair": "Schaden melden",
+      "set-registration": "Zulassung ändern",
+      "set-financing": "Finanzierungsstatus ändern",
       "title": "Fahrzeug",
       "vehicle-specific": {
         "cubicCapacity": "Hubraum",

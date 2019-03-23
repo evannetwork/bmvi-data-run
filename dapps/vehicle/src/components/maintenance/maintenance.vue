@@ -36,13 +36,26 @@
         <button type="submit" class="btn btn-rounded btn-primary d-flex align-items-center"
           @click="reportDamage()"
           :disabled="syncing">
-          <div class="spinner-border text-light mr-3"
+          <div class="spinner-border spinner-border-sm text-light mr-3"
             v-if="syncing">
           </div>
           <span>{{ '_bmvi.vehicle.set-repair' | translate }}</span>
         </button>
       </div>
-
+      <div class="d-flex pb-3 pt-3 border-bottom align-items-center">
+        <h4 class="m-0">
+          {{ `_bmvi.vehicle.nav.registration` | translate }}
+        </h4>
+        <div class="mx-auto"></div>
+        <button type="submit" class="btn btn-rounded btn-primary d-flex align-items-center"
+          @click="setRegistration()"
+          :disabled="syncing">
+          <div class="spinner-border spinner-border-sm text-light mr-3"
+            v-if="syncing">
+          </div>
+          <span>{{ '_bmvi.vehicle.set-registration' | translate }}</span>
+        </button>
+      </div>
       <table class="table table-borderless mt-3">
         <tbody>
           <tr

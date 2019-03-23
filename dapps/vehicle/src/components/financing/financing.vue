@@ -26,8 +26,23 @@
 */
 
 <template>
-  <div class="">
-    financing
+  <div>
+    <div class="bg-level-1 border p-3 m-3">
+      <div class="d-flex pb-3 pt-3 border-bottom align-items-center">
+        <h4 class="m-0">
+          {{ `_bmvi.vehicle.nav.financing` | translate }}
+        </h4>
+        <div class="mx-auto"></div>
+        <button type="submit" class="btn btn-rounded btn-primary d-flex align-items-center"
+          @click="setFinancing()"
+          :disabled="syncing">
+          <div class="spinner-border spinner-border-sm text-light mr-3"
+            v-if="syncing">
+          </div>
+          <span>{{ '_bmvi.vehicle.set-financing' | translate }}</span>
+        </button>
+      </div>
+    </div>
   </div>
 </template>
 

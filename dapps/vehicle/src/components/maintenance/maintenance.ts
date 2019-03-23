@@ -71,11 +71,36 @@ export default class MaintenanceComponent extends Vue {
   /**
    * Report a damage
    */
-  reportDamage() {
+  async reportDamage() {
     const runtime = (<any>this).getRuntime();
-
     this.syncing = true;
-    console.log('REPORT DAMAGE!!!');
+    await runtime.dataContract.addListEntries(
+      (<any>this).activeDApp().contractAddress,
+      'maintenanceData',
+      [{description: 'Auto ist kaputt', reference: Date.now()}],
+      dappBrowser.core.activeAccount()
+    )
+    this.syncing = false;
+  }
+
+  /**
+   * toggle the registration
+   */
+  async setRegistration() {
+    const runtime = (<any>this).getRuntime();
+    this.syncing = true;
+    const registration = await runtime.dataContract.getEntry(
+      (<any>this).activeDApp().contractAddress,
+      'approval',
+      dappBrowser.core.activeAccount()
+    );
+
+    await runtime.dataContract.setEntry(
+      (<any>this).activeDApp().contractAddress,
+      'approval',
+      !registration,
+      dappBrowser.core.activeAccount()
+    )
     this.syncing = false;
   }
 }

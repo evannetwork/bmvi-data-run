@@ -60,9 +60,12 @@ export default {
         "course": "Course",
         "detail": "General data",
         "financing": "Financing",
-        "maintenance": "Repair- / Maintenance-Log"
+        "maintenance": "Repair- / Maintenance-Log",
+        "registration": "Approval"
       },
       "set-repair": "Report a damage",
+      "set-registration": "Approval change",
+      "set-financing": "Change financing data",
       "title": "Vehicle",
       "vehicle-specific": {
         "cubicCapacity": "Cubic capacity",
