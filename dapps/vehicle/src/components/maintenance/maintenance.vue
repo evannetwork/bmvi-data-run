@@ -26,8 +26,33 @@
 */
 
 <template>
-  <div class="">
-    maintenance
+  <div>
+    <div class="bg-level-1 border p-3 m-3">
+      <div class="d-flex pb-3 border-bottom align-items-center">
+        <h4 class="m-0">
+          {{ `_bmvi.vehicle.nav.maintenance` | translate }}
+        </h4>
+        <div class="mx-auto"></div>
+        <button type="submit" class="btn btn-rounded btn-primary d-flex align-items-center"
+          @click="reportDamage()"
+          :disabled="syncing">
+          <div class="spinner-border text-light mr-3"
+            v-if="syncing">
+          </div>
+          <span>{{ '_bmvi.vehicle.set-repair' | translate }}</span>
+        </button>
+      </div>
+
+      <table class="table table-borderless mt-3">
+        <tbody>
+          <tr
+            v-for="(field, index) in vehicle.maintenanceData">
+            <td>{{ field.date }}</td>
+            <td>{{ field.description }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </template>
 

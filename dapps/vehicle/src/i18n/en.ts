@@ -62,6 +62,7 @@ export default {
         "financing": "Financing",
         "maintenance": "Repair- / Maintenance-Log"
       },
+      "set-repair": "Report a damage",
       "title": "Vehicle",
       "vehicle-specific": {
         "cubicCapacity": "Cubic capacity",

@@ -62,6 +62,7 @@ export default {
         "financing": "Finanzierung",
         "maintenance": "Reperatur- / Wartungsprotokoll"
       },
+      "set-repair": "Schaden melden",
       "title": "Fahrzeug",
       "vehicle-specific": {
         "cubicCapacity": "Hubraum",

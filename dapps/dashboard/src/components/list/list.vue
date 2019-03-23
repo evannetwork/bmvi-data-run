@@ -51,13 +51,13 @@
               @click="openVehicle(vehicle)">
               <template v-if="vehicle.loading">
                 <th class="text-primary">
-                 <div class="spinner-border text-secondary"></div>
-               </th>
+                  <div class="spinner-border text-secondary"></div>
+                </th>
                 <td></td>
                 <td></td>
               </template>
               <template v-if="!vehicle.loading">
-                <th class="text-primary">{{ vehicle.metadata.fin }}</th>
+                <td class="text-primary">{{ vehicle.metadata.fin }}</td>
                 <td>{{ vehicle.cocData.factoryBrand }}</td>
                 <td>{{ vehicle.cocData.variant }}</td>
               </template>

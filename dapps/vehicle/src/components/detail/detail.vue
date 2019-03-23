@@ -46,4 +46,3 @@
   import DetailComponent from './detail.ts';
   export default DetailComponent;
 </script>
-

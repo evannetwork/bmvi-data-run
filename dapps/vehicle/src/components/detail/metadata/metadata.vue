@@ -31,7 +31,7 @@
     <template v-if="!loading">
       <div class="bg-level-1 border p-3">
         <div class="d-flex p-2 pt-3 pb-3 border-bottom">
-          <h4 class="m-0 ml-3">
+          <h4 class="m-0">
             {{ `_bmvi.vehicle.identification.title` | translate }}
           </h4>
         </div>
@@ -53,7 +53,7 @@
       </div>
       <div class="bg-level-1 border p-3 mt-3">
         <div class="d-flex p-2 pt-3 pb-3 border-bottom">
-          <h4 class="m-0 ml-3">
+          <h4 class="m-0">
             {{ `_bmvi.vehicle.engine.title` | translate }}
           </h4>
         </div>
@@ -70,7 +70,7 @@
       </div>
       <div class="bg-level-1 border p-3 mt-3">
         <div class="d-flex p-2 pt-3 pb-3 border-bottom">
-          <h4 class="m-0 ml-3">
+          <h4 class="m-0">
             {{ `_bmvi.vehicle.vehicle-specific.title` | translate }}
           </h4>
         </div>
@@ -87,7 +87,7 @@
       </div>
       <div class="bg-level-1 border p-3 mt-3">
         <div class="d-flex p-2 pt-3 pb-3 border-bottom">
-          <h4 class="m-0 ml-3">
+          <h4 class="m-0">
             {{ `_bmvi.vehicle.further-informations.title` | translate }}
           </h4>
         </div>

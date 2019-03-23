@@ -49,11 +49,6 @@ export default class MetadataComponent extends Vue {
   vehicle: any;
 
   /**
-   * specific vehicle data area
-   */
-  data: any = null;
-
-  /**
    * Load initial data for the twin
    */
   async created() {
@@ -64,7 +59,7 @@ export default class MetadataComponent extends Vue {
     );
 
     // load metadata to show fin
-    this.data = await this.vehicle.getEntry('metadata');
+    await this.vehicle.getEntry('metadata');
     this.loading = false;
   }
 }
