@@ -36,6 +36,12 @@ export default {
         "zb2": "ZB II"
       },
       "back-to-list": "Back to fleet overview",
+      "coc": {
+        "execution": "Execution",
+        "factoryBrand": "Factory Brand",
+        "type": "Type",
+        "variant": "Variant"
+      },
       "engine": {
         "diesel": "Diesel",
         "engine": "Engine",
@@ -45,6 +51,16 @@ export default {
       },
       "error": "Error",
       "error-desc": "The data for this vehicle could not be loaded.<br>Please try again.",
+      "financing": {
+        "false": "Not financed",
+        "question": "Set financed status",
+        "question-desc": "Do you really want to change the financed status?",
+        "set": {
+          "false": "Set status to not financed",
+          "true": "Set status to Financed"
+        },
+        "true": "Financed"
+      },
       "further-informations": {
         "title": "Further informations"
       },
@@ -57,6 +73,14 @@ export default {
         "title": "Vehicle identification",
         "tsn": "Type code number"
       },
+      "maintenance": {
+        "bankApproved": "Bank",
+        "description": "Description",
+        "id": "ID",
+        "insuraceApproved": "Insurance",
+        "maintenanceApproved": "Maintenance",
+        "status": "Release-State"
+      },
       "nav": {
         "course": "Course",
         "detail": "General data",
@@ -64,9 +88,21 @@ export default {
         "maintenance": "Repair- / Maintenance-Log",
         "registration": "Approval"
       },
-      "set-repair": "Report a damage",
-      "set-registration": "Approval change",
-      "set-financing": "Change financing data",
+      "registration": {
+        "false": "Not approved",
+        "question": "Set approved status",
+        "question-desc": "Do you really want to change the approved status?",
+        "set": {
+          "false": "Set status to not approved",
+          "true": "Set status to approved"
+        },
+        "true": "Approved"
+      },
+      "set-repair": {
+        "question": "Report a damage",
+        "question-desc": "Do you really want to report a damage?",
+        "title": "Report a damage"
+      },
       "title": "Vehicle",
       "vehicle-specific": {
         "cubicCapacity": "Cubic capacity",
@@ -74,12 +110,6 @@ export default {
         "kw": "KW",
         "ps": "PS",
         "title": "Vehicle specific informations"
-      },
-      "coc": {
-        "execution": "Execution",
-        "factoryBrand": "Factory Brand",
-        "type": "Type",
-        "variant": "Variant"
       },
       "zb1": {
         "firstRegistrationDate": "First registration date"
@@ -90,4 +120,4 @@ export default {
     }
   }
 }
-/* tslint:enable */;
+/* tslint:enable */

@@ -66,6 +66,7 @@ export default class BmviVehicle {
    * @param      {string}  address  The address
    */
   static getVehicle(runtime: any, address: string, accountId = dappBrowser.core.activeAccount()) {
+    console.log(address + ' ' + accountId)
     return vehicleCache[address + accountId] || new BmviVehicle(runtime, address, accountId);
   }
 
@@ -77,6 +78,7 @@ export default class BmviVehicle {
     this.address = address;
     this.runtime = runtime;
 
+    console.log(address + ' ' + accountId)
     vehicleCache[address + accountId] = this;
   }
 
@@ -86,10 +88,8 @@ export default class BmviVehicle {
   async getEntry(fieldName: string, accountId: string = this.accountId, ...args) {
     this.loadedEntries.push(fieldName);
 
-    this[fieldName] = await this.runtime.dataContract.getEntry.apply(
-      this.runtime.dataContract,
-      [ this.address, fieldName, accountId ].concat(args)
-    );
+    this[fieldName] = await this.runtime.dataContract.getEntry(this.address, fieldName, accountId,
+      ...args);
 
     return this[fieldName];
   }
@@ -98,10 +98,7 @@ export default class BmviVehicle {
    * Load list entries
    */
   async getListEntries(fieldName: string, accountId: string = this.accountId, ...args) {
-    return this.runtime.dataContract.getListEntries.apply(
-      this.runtime.dataContract,
-      [ this.address ].concat(args)
-    );
+    return this.runtime.dataContract.getListEntries(this.address, fieldName, accountId, ...args);
   }
 
   /**

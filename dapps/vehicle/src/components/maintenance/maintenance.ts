@@ -54,6 +54,16 @@ export default class MaintenanceComponent extends Vue {
   syncing = false;
 
   /**
+   * All list entries
+   */
+  maintenanceData = { };
+
+  /**
+   * current logged in user
+   */
+  activeAccount = dappBrowser.core.activeAccount();
+
+  /**
    * Load initial data for the twin
    */
   async created() {
@@ -63,8 +73,16 @@ export default class MaintenanceComponent extends Vue {
       (<any>this).activeDApp().contractAddress
     );
 
-    // load metadata to show fin
-    await this.vehicle.getListEntries('maintenanceData');
+    // load metadata and merge the status entries together
+    const entries = await this.vehicle.getListEntries('maintenanceData',
+      this.activeAccount, true, true, Number.MAX_VALUE, 0, false);
+    entries.forEach((entry) => {
+      this.maintenanceData[entry.reference] = Object.assign(
+        this.maintenanceData[entry.reference] || { },
+        entry
+      );
+    });
+
     this.loading = false;
   }
 
@@ -78,28 +96,7 @@ export default class MaintenanceComponent extends Vue {
       (<any>this).activeDApp().contractAddress,
       'maintenanceData',
       [{description: 'Auto ist kaputt', reference: Date.now()}],
-      dappBrowser.core.activeAccount()
-    )
-    this.syncing = false;
-  }
-
-  /**
-   * toggle the registration
-   */
-  async setRegistration() {
-    const runtime = (<any>this).getRuntime();
-    this.syncing = true;
-    const registration = await runtime.dataContract.getEntry(
-      (<any>this).activeDApp().contractAddress,
-      'approval',
-      dappBrowser.core.activeAccount()
-    );
-
-    await runtime.dataContract.setEntry(
-      (<any>this).activeDApp().contractAddress,
-      'approval',
-      !registration,
-      dappBrowser.core.activeAccount()
+      this.activeAccount
     )
     this.syncing = false;
   }

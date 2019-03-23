@@ -36,6 +36,12 @@ export default {
         "zb2": "ZB II"
       },
       "back-to-list": "Zurück zur Flottenübersicht",
+      "coc": {
+        "execution": "Ausführung",
+        "factoryBrand": "Fabrikmarke",
+        "type": "Typ",
+        "variant": "Variante"
+      },
       "engine": {
         "diesel": "Diesel",
         "engine": "Motor",
@@ -45,6 +51,16 @@ export default {
       },
       "error": "Fehler",
       "error-desc": "Die Daten für diese Fahrzeug konnten nicht geladen werden.<br>Bitte versuchen Sie es erneut.",
+      "financing": {
+        "false": "Nicht finanziert",
+        "question": "Finanzierungsstatus setzen",
+        "question-desc": "Wollen Sie wirklich den Finanzierungsstatus ändern?",
+        "set": {
+          "false": "Status auf nicht finanziert setzen",
+          "true": "Status auf finanziert setzen"
+        },
+        "true": "Finanziert"
+      },
       "further-informations": {
         "title": "Weitere Informationen"
       },
@@ -57,6 +73,14 @@ export default {
         "title": "Fahrzeugidenfizierung",
         "tsn": "Typschlüsselnummer"
       },
+      "maintenance": {
+        "bankApproved": "Bank",
+        "description": "Beschreibung",
+        "id": "ID",
+        "insuraceApproved": "Versicherung",
+        "maintenanceApproved": "Werkstatt",
+        "status": "Freigabe"
+      },
       "nav": {
         "course": "Fahrroute",
         "detail": "Generelle Daten",
@@ -64,9 +88,21 @@ export default {
         "maintenance": "Reperatur- / Wartungsprotokoll",
         "registration": "Zulassung"
       },
-      "set-repair": "Schaden melden",
-      "set-registration": "Zulassung ändern",
-      "set-financing": "Finanzierungsstatus ändern",
+      "registration": {
+        "false": "Nicht zugelassen",
+        "question": "Status ändern",
+        "question-desc": "Wollen sie wirklich den Zugelassen Status ändern?",
+        "set": {
+          "false": "Status auf nicht zugelassen setzen",
+          "true": "Status auf zugelassen setzen"
+        },
+        "true": "Zugelassen"
+      },
+      "set-repair": {
+        "question": "Schaden melden",
+        "question-desc": "Wollen Sie wirklich einen Schaden melden?",
+        "title": "Schaden melden"
+      },
       "title": "Fahrzeug",
       "vehicle-specific": {
         "cubicCapacity": "Hubraum",
@@ -74,12 +110,6 @@ export default {
         "kw": "KW",
         "ps": "PS",
         "title": "Fahrzeugspezifische Informationen"
-      },
-      "coc": {
-        "execution": "Ausführung",
-        "factoryBrand": "Fabrikmarke",
-        "type": "Typ",
-        "variant": "Variante"
       },
       "zb1": {
         "firstRegistrationDate": "Erstzulassung"
@@ -90,4 +120,4 @@ export default {
     }
   }
 }
-/* tslint:enable */;
+/* tslint:enable */

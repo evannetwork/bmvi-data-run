@@ -14,7 +14,7 @@
       "secondaryColor": "#f9f9ff",
       "standalone": true,
       "type": "dapp",
-      "origin": "Qmet49t2J8mw2fa2nFfjYrx1dseYawmpNW7mDBsvp38WCn"
+      "origin": "Qmd8Gc1T1vUVDVtGj1bkvzy6t1Nr1ctcWyiF6D1yrayueN"
     },
     "dbcpVersion": 2,
     "description": "Root app for displaying navigation ",
@@ -38,7 +38,7 @@
     ],
     "version": "1.0.0",
     "versions": {
-      "1.0.0": "Qmax1vtvWSEDprB8j8FgTFFtpfSBRRY1sps3Tm6vF6ZrYv"
+      "1.0.0": "QmR1cUeDvnnrUrA5BQzuD4VJWsdCH4grCcg4eEk1tAFqfJ"
     }
   }
 }
