@@ -13,6 +13,10 @@ For example a damage is registered on the car, it travels automatically to the m
 All these different stakeholders have their own view to the data of the vehicle and the owner of the car has the data sovereignty of the registered data of his vehicle.
 
 # Screenshots (of the live application)
+- Startpage
+![startpage](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 1")
+
+
 - Overview of the vehicle fleet of the owner
 
 - Detailed vehicle data
