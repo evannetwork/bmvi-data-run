@@ -73,8 +73,13 @@ export default class ListComponent extends Vue {
       // load the twin data asynchroniously and show the loading symbol for each row
       twin.loading = true;
       Promise.resolve().then(async () => {
-        await twin.getEntry('metadata');
-        await twin.getEntry('cocData');
+        try {
+          await twin.getEntry('metadata');
+          await twin.getEntry('cocData');
+        } catch (ex) {
+          twin.error = ex;
+          console.error(ex);
+        }
 
         twin.loading = false;
       });
@@ -92,7 +97,7 @@ export default class ListComponent extends Vue {
    */
   openVehicle(vehicle: any) {
     (<any>this).evanNavigate([
-      `vehicle.bmvi.${ dappBrowser.getDomainName() }`,
+      `list/vehicle.bmvi.${ dappBrowser.getDomainName() }`,
       vehicle.address
     ].join('/'));
   }

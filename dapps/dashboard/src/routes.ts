@@ -37,6 +37,7 @@ const routeRegistration: Array<RouteRegistrationInterface> = [
   { path: '', component: OverviewComponent },
   { path: 'list', component: ListComponent },
   { path: 'usecase', component: InfoComponent },
+  { path: `list/vehicle.bmvi.${ dappBrowser.getDomainName() } }/:address`, component: DAppLoader },
   { path: `vehicle.bmvi.${ dappBrowser.getDomainName() } }/:address`, component: DAppLoader },
 ];
 

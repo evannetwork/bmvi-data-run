@@ -52,7 +52,7 @@
           </div>
         </div>
 
-        <div v-if="!loading && !error">
+        <template v-if="!loading && !error">
           <transition name="fade" mode="out-in">
             <router-view></router-view>
           </transition>
@@ -83,7 +83,7 @@
               </div>
             </template>
           </evan-dapp-wrapper-level-2>
-        </div>
+        </template>
       </template>
     </evan-dapp-wrapper>
   </div>

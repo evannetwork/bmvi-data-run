@@ -39,17 +39,33 @@ module.exports = class SmartAgentBmviDataRunInitializerEmily extends Initializer
             // const streamId = await this.runtime.dataContract.getEntry(
             //    contractId, 'streamId', this.config.ethAccount)
             const streamId = contractId
+            // approved interval
+            let approved = false
+            setInterval(async () => {
+              try {
+                approved = await this.runtime.dataContract.getEntry(
+                  contractId, 'approval', this.config.ethAccount)
+                api.log(`twin "${contractId}" is ${approved ? ' ' : 'not '}approved`)
+              } catch (ex) {
+                api.log(`could not check if "${contractId}" is approved; ` +
+                  ex.message || ex, 'error')
+              }
+            }, this.config.appvovalCheckInterval)
+            // stream interval
             let cursor = 0
             setInterval(async () => {
-              // pretend, data is from now
-              const row = { ...data[cursor], last_seen: Date.now() }
-              try {
-                await api.streamr.addToStream(streamId, row)
-              } catch (ex) {
+              // only stream if approved
+              if (approved) {
+                // pretend, data is from now
+                const row = { ...data[cursor], last_seen: Date.now() }
+                try {
+                  await api.streamr.addToStream(streamId, row)
+                } catch (ex) {
 
-              }
-              if (cursor++ >= data.length) {
-                cursor = 0;
+                }
+                if (cursor++ >= data.length) {
+                  cursor = 0;
+                }
               }
             }, this.config.streamInterval)
           } catch (ex) {

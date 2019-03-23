@@ -27,7 +27,6 @@
 
 <template>
   <div class="h-100 w-100 d-block">
-    course
     <l-map :zoom="config.zoom" :center="config.center">
       <l-tile-layer :url="config.url" :attribution="config.attribution"></l-tile-layer>
       <l-marker :lat-lng="config.marker"></l-marker>

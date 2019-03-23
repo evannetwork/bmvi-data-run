@@ -25,10 +25,7 @@ module.exports = class SmartAgentBmvidatarunInsuranceWatcherInitializer extends 
     class SmartAgentBmviDataRunInsurance extends api.smartAgents.SmartAgent {
       async initialize () {
         await super.initialize()
-
-        // watch for new repair messages
-        // when the car is financed check if bank approves
-        // then allow the repair
+        this.approvals = {}
       }
 
       async startEventWatching() {
@@ -53,7 +50,7 @@ module.exports = class SmartAgentBmvidatarunInsuranceWatcherInitializer extends 
                   const entries = await this.runtime.dataContract.getListEntries(
                     tx.to,
                     'maintenanceData',
-                    config.ethAccount,
+                    this.config.ethAccount,
                     true,
                     true,
                     10,
@@ -64,12 +61,17 @@ module.exports = class SmartAgentBmvidatarunInsuranceWatcherInitializer extends 
                   const requests = entries.filter(entry => entry.description)
                   if (requests.length) {
                     const reference = requests[0].reference
-                    await this.runtime.dataContract.addListEntries(
-                      tx.to,
-                      'maintenanceData',
-                      [ { reference, insuraceApproved: true } ],
-                      this.config.ethAccount,
-                    )
+                    if (!this.approvals[reference]) {
+                      // mark as approved and assume, that approval will succeed
+                      this.approvals[reference] = true
+                      api.log(`approving damage report ${reference} for ${tx.to} from insurance`)
+                      await this.runtime.dataContract.addListEntries(
+                        tx.to,
+                        'maintenanceData',
+                        [ { reference, insuraceApproved: true } ],
+                        this.config.ethAccount,
+                      )
+                    }
                   }
                 }
               }
