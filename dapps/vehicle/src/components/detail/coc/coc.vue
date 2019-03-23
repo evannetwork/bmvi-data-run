@@ -29,7 +29,7 @@
   <div class="p-3">
     <div class="bg-level-1 border p-3">
       <evan-loading v-if="loading"></evan-loading>
-      <template v-if="!loading">
+      <template v-if="!loading && !error">
         <div class="d-flex p-2 pt-3 pb-3 border-bottom">
           <h4 class="m-0">
             {{ `_bmvi.vehicle.area.coc` | translate }}

@@ -49,17 +49,27 @@ export default class CocComponent extends Vue {
   vehicle: any;
 
   /**
+   * no permissions?
+   */
+  error: any;
+
+  /**
    * Load initial data for the twin
    */
   async created() {
+    try {
       // initialize vehicle
-    this.vehicle = BmviVehicle.getVehicle(
-      (<any>this).getRuntime(),
-      (<any>this).activeDApp().contractAddress
-    );
+      this.vehicle = BmviVehicle.getVehicle(
+        (<any>this).getRuntime(),
+        (<any>this).activeDApp().contractAddress
+      );
 
-    // load metadata to show fin
-    await this.vehicle.getEntry('cocData');
+      // load metadata to show fin
+      await this.vehicle.getEntry('cocData');
+    } catch(ex) {
+      this.error = ex;
+    }
+
     this.loading = false;
   }
 }

@@ -33,24 +33,14 @@
       <template v-slot:content>
         <evan-loading v-if="loading"></evan-loading>
 
-        <div class="p-3" v-if="error && !loading">
-          <div class="border bg-level-1">
-            <div class="d-flex p-2 pt-3 pb-3 border-bottom">
-              <h4 class="m-0 ml-3">
-                {{ '_bmvi.vehicle.error' | translate }}
-              </h4>
-            </div>
-
-            <div class="p-3" v-html="$t('_bmvi.vehicle.error-desc')"></div>
-
-            <div class="p-3 mt-3 text-center">
-              <button type="submit" class="btn btn-rounded btn-primary"
-                @click="backToList()">
-                <span>{{ '_bmvi.vehicle.back-to-list' | translate }}</span>
-              </button>
-            </div>
-          </div>
-        </div>
+        <bmvi-error v-if="error && !loading">
+          <template v-slot:button>
+            <button type="submit" class="btn btn-rounded btn-primary"
+              @click="backToList()">
+              <span>{{ '_bmvi.vehicle.back-to-list' | translate }}</span>
+            </button>
+          </template>
+        </bmvi-error>
 
         <template v-if="!loading && !error">
           <transition name="fade" mode="out-in">

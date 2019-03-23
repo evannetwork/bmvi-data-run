@@ -25,23 +25,25 @@
   https://evan.network/license/
 */
 
-// import evan libs
-import { ComponentRegistrationInterface } from '@evan.network/ui-vue-core';
+<template>
+  <div class="p-3">
+    <div class="border bg-level-1">
+      <div class="d-flex p-2 pt-3 pb-3 border-bottom">
+        <h4 class="m-0 ml-3">
+          {{ '_bmvi.vehicle.error' | translate }}
+        </h4>
+      </div>
 
+      <div class="p-3" v-html="$t('_bmvi.vehicle.error-desc')"></div>
 
-import { LMap, LTileLayer, LMarker, LPolyline } from 'vue2-leaflet';
-import ErrorComponent from './error/error.vue';
+      <div class="p-3 mt-3 text-center">
+        <slot name="button"></slot>
+      </div>
+    </div>
+  </div>
+</template>
 
-// export them all, so other applications can access them
-export { }
-
-// map them to element names, so they can be used within templates
-const componentRegistration: Array<ComponentRegistrationInterface> = [
-  { name: 'l-map', component: LMap },
-  { name: 'l-tile-layer', component: LTileLayer},
-  { name: 'l-marker', component: LMarker},
-  { name: 'l-polyline', component: LPolyline}
-  { name: 'bmvi-erro', component: ErrorComponent}
-];
-
-export default componentRegistration;
+<script lang="ts">
+  import ErrorComponent from './error.ts';
+  export default ErrorComponent;
+</script>
