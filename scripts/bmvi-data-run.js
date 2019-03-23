@@ -131,6 +131,22 @@ module.exports = {
         await runtime.dataContract.setEntry(contract, key, twin[key], accountId);
       }
 
+      // invite to contract
+      for (let key of Object.keys(accounts)) {
+        await runtime.dataContract.inviteToContract(
+          null, contract.options.address, accountId, accounts[key]);
+      }
+
+      // assign roles
+      await runtime.rightsAndRoles.addAccountToRole(
+        contract, accountId, accounts.maintenance, 64);
+      await runtime.rightsAndRoles.addAccountToRole(
+        contract, accountId, accounts.bank, 65);
+      await runtime.rightsAndRoles.addAccountToRole(
+        contract, accountId, accounts.bmvi, 66);
+      await runtime.rightsAndRoles.addAccountToRole(
+        contract, accountId, accounts.insurance, 67);
+
       console.dir(twinContracts);
     }
 
