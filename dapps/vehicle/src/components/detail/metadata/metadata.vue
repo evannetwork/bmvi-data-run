@@ -31,7 +31,7 @@
     <template v-if="!loading">
       <div class="bg-level-1 border p-3 text-center mb-3">
         <i class="fas fa-check text-success m-4" style="font-size: 5em;" v-if="registration"></i>
-        <i class="fas fa-close text-danger m-4" style="font-size: 5em;" v-if="!registration"></i>
+        <i class="fas fa-times text-danger m-4" style="font-size: 5em;" v-if="!registration"></i>
 
         <h3 class="m-3">
           {{ `_bmvi.vehicle.registration.${ registration }` | translate }}
