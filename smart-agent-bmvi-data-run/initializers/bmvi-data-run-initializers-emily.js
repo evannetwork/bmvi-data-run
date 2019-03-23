@@ -45,7 +45,7 @@ module.exports = class SmartAgentBmviDataRunInitializerEmily extends Initializer
               try {
                 approved = await this.runtime.dataContract.getEntry(
                   contractId, 'approval', this.config.ethAccount)
-                api.log(`twin "${contractId}" is ${approved ? ' ' : 'not '}approved`)
+                api.log(`twin "${contractId}" is ${approved ? ' ' : 'not '}approved`, 'debug')
               } catch (ex) {
                 api.log(`could not check if "${contractId}" is approved; ` +
                   ex.message || ex, 'error')
