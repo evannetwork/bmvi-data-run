@@ -47,7 +47,8 @@ export default {
         "engine": "Engine",
         "fuel": "Fuel",
         "title": "Engine",
-        "type": "Type"
+        "type": "Type",
+        "petrols": "Petrol"
       },
       "error": "Error",
       "error-desc": "The data for this vehicle could not be loaded.<br>Please try again.",

@@ -47,7 +47,8 @@ export default {
         "engine": "Motor",
         "fuel": "Kraftstoff",
         "title": "Motor",
-        "type": "Typ"
+        "type": "Typ",
+        "petrols": "Benzin"
       },
       "error": "Fehler",
       "error-desc": "Die Daten für diese Fahrzeug konnten nicht geladen werden.<br>Bitte versuchen Sie es erneut.",
