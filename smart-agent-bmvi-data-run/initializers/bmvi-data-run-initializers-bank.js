@@ -25,9 +25,7 @@ module.exports = class SmartAgentBmvidatarunBankWatcherInitializer extends Initi
     class SmartAgentBmviDataRunBank extends api.smartAgents.SmartAgent {
       async initialize () {
         await super.initialize()
-
-        // watch for new repair messages
-        // when the car is financed approve
+        this.approvals = {}
       }
 
       async startEventWatching() {
@@ -53,7 +51,7 @@ module.exports = class SmartAgentBmvidatarunBankWatcherInitializer extends Initi
                   const entries = await this.runtime.dataContract.getListEntries(
                     tx.to,
                     'maintenanceData',
-                    config.ethAccount,
+                    this.config.ethAccount,
                     true,
                     true,
                     10,
@@ -64,18 +62,24 @@ module.exports = class SmartAgentBmvidatarunBankWatcherInitializer extends Initi
                   const financed = await this.runtime.dataContract.getEntry(
                     tx.to,
                     'financing',
-                    config.ethAccount
+                    this.config.ethAccount
                   )
 
                   const requests = entries.filter(entry => entry.description)
                   if (requests.length && financed) {
                     const reference = requests[0].reference
-                    await this.runtime.dataContract.addListEntries(
-                      tx.to,
-                      'maintenanceData',
-                      [ { reference, bankApproved: true } ],
-                      this.config.ethAccount,
-                    )
+                    if (!this.approvals[reference]) {
+                      // mark as approved and assume, that approval will succeed
+                      this.approvals[reference] = true
+                      api.log(`approving damage report ${reference} for ${tx.to} from bank`)
+                      await this.runtime.dataContract.addListEntries(
+                        tx.to,
+                        'maintenanceData',
+                        [ { reference, bankApproved: true } ],
+                        this.config.ethAccount,
+                      )
+
+                    }
                   }
                 }
               }
@@ -88,6 +92,7 @@ module.exports = class SmartAgentBmvidatarunBankWatcherInitializer extends Initi
     // start the initialization code
     const smartAgentBmviDataRunBank = new SmartAgentBmviDataRunBank(api.config.smartAgentBmviDataRunBank)
     await smartAgentBmviDataRunBank.initialize()
+    await smartAgentBmviDataRunBank.startEventWatching()
 
     // objects and values used outside initializer
     api.smartAgentBmviDataRunBank = smartAgentBmviDataRunBank
