@@ -16,14 +16,17 @@ All these different stakeholders have their own view to the data of the vehicle 
 - Startpage
 ![startpage](https://github.com/evannetwork/bmvi-data-run/raw/develop/images/dashboard.png)
 
-
 - Overview of the vehicle fleet of the owner
+![fleet](https://github.com/evannetwork/bmvi-data-run/raw/develop/images/fleet.png)
 
 - Detailed vehicle data
+![metadata](https://github.com/evannetwork/bmvi-data-run/raw/develop/images/metadata.png)
 
 - Maintenance history of the vehicle
+![maintenance](https://github.com/evannetwork/bmvi-data-run/raw/develop/images/maintenance.png)
 
 - Live data streaming of the current vehicle position
+![stream](https://github.com/evannetwork/bmvi-data-run/raw/develop/images/stream.png)
 
 # Team
 Anja Wilde - Project lead and good fairy
