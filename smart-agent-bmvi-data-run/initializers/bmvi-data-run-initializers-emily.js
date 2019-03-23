@@ -26,6 +26,11 @@ module.exports = class SmartAgentBmviDataRunInitializerEmily extends Initializer
 
     // specialize from blockchain smart agent library
     class SmartAgentBmviDataRunEmily extends api.smartAgents.SmartAgent {
+      /**
+       * initialize smart agent and create runtime
+       *
+       * @return     {Promise}  resolved when done
+       */
       async initialize () {
         await super.initialize()
         this.streams = {}
@@ -33,6 +38,11 @@ module.exports = class SmartAgentBmviDataRunInitializerEmily extends Initializer
         this.cursors = {}
       }
 
+      /**
+       * start listener for maintenance messages via 'maintenanceData' field
+       *
+       * @return     {Promise}  resolved when done
+       */
       async startMaintenanceWatcher() {
         this.managedTwins = Object.keys(api.config.smartAgentBmviDataRunEmily.emilies)
         // add DataContract abi to decoder
@@ -78,13 +88,18 @@ module.exports = class SmartAgentBmviDataRunInitializerEmily extends Initializer
         })
       }
 
+      /**
+       * start streaming car data to streamer
+       *
+       * @return     {Promise}  { description_of_the_return_value }
+       */
       async startStreaming () {
         const emilies = await this._getEmilies()
         for (let contractId of Object.keys(emilies)) {
           try {
             const data = await this._getCsvData(`${__dirname}/../csv/${emilies[contractId]}`)
 
-            // approved interval
+            // check each car is approved, will not stream data (move) as long it is not approved
             let approved = false
             setInterval(async () => {
               try {
@@ -100,9 +115,12 @@ module.exports = class SmartAgentBmviDataRunInitializerEmily extends Initializer
             // fade coordinates to maintenance point
             let maintenanceFade = 0
             setInterval(async () => {
+              // only for cars, that have an approved maintenance
               if (this.maintenances[contractId]) {
+                // increase fade by step (reduces distance to maintenance point with each step)
                 maintenanceFade += this.config.maintenanceFadeStep
                 if (maintenanceFade >= 1) {
+                  // if maintenance point hash been reached, lock on this point, reset cursor
                   maintenanceFade = 1
                   this.cursors[contractId] = 0
                 }
@@ -119,6 +137,7 @@ module.exports = class SmartAgentBmviDataRunInitializerEmily extends Initializer
               if (approved) {
                 // pretend, data is from now
                 const row = { ...data[this.cursors[contractId]], last_seen: Date.now() }
+                // if maintenance fade is active, move from last point to maintenance point
                 row.longitude = row.longitude * (1 - maintenanceFade) + this.config.maintenanceX * maintenanceFade
                 row.latitude = row.latitude * (1 - maintenanceFade) + this.config.maintenanceY * maintenanceFade
                 try {
@@ -126,6 +145,7 @@ module.exports = class SmartAgentBmviDataRunInitializerEmily extends Initializer
                 } catch (ex) {
                   api.log(`could not stream data for ${contractId}; ${ex.message || ex}`, 'error')
                 }
+                // no not move in data array as long as maintenance is on the way
                 if (!this.maintenances[contractId]) {
                   if (this.cursors[contractId]++ >= data.length) {
                     this.cursors[contractId] = 0;
@@ -139,6 +159,12 @@ module.exports = class SmartAgentBmviDataRunInitializerEmily extends Initializer
         }
       }
 
+      /**
+       * pare csv file and return data
+       *
+       * @param      {string}          file    name of file to parse
+       * @return     {Promise<any[]>}  csv data as array of objects
+       */
       async _getCsvData (file) {
         const data = [];
         await new Promise((resolve, reject) => {
@@ -152,6 +178,11 @@ module.exports = class SmartAgentBmviDataRunInitializerEmily extends Initializer
         return data;
       }
 
+      /**
+       * get object with emily ids and related data reference
+       *
+       * @return     {Promise<any>}  key is emily id (contractId), value is file name
+       */
       async _getEmilies() {
         return Promise.resolve(this.config.emilies)
       }
