@@ -105,6 +105,8 @@ contract EmilyDataContractFactory is BaseContractFactory {
 
         // lists
         roles.setRoleOperationCapability(
+            ownerRole, 0, hashPropertyCapability(listentryLabel, "maintenanceData", setLabel), true);
+        roles.setRoleOperationCapability(
             insuranceRole, 0, hashPropertyCapability(listentryLabel, "maintenanceData", setLabel), true);
         roles.setRoleOperationCapability(
             maintenanceRole, 0, hashPropertyCapability(listentryLabel, "maintenanceData", setLabel), true);
