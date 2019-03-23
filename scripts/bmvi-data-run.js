@@ -147,6 +147,16 @@ module.exports = {
       await runtime.rightsAndRoles.addAccountToRole(
         contract, accountId, accounts.insurance, 67);
 
+      // set verification for approval (if true)
+      await runtime.verifications.createIdentity(accountId, contract.options.address);
+      if (twin.approval) {
+        console.log(`setting verification for "${contract.options.address}"`);
+        await runtimes[accounts.bmvi].verifications.setVerification(
+          accounts.bmvi, contract.options.address, '/approval');
+      } else {
+        console.log(`not setting verification for "${contract.options.address}"`);
+      }
+
       console.dir(twinContracts);
     }
 
