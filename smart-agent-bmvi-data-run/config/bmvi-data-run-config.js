@@ -20,8 +20,8 @@ const carFiles = {
 exports['default'] = {
 
   ethAccounts: {
-    // emily / bmvi
-    "0xaDb25397Fe94968a22fE1b353290eFfB7c847a8F": "60090be3fdac8259c700b07091b14570dd19fc2b5bdff8898e3d8fa4e5221098",
+    // emily / ownwer
+    "0x0Ed0a2610034f0214BBBC43d6e4113E1eD4e3C19": "376b09751ade01cb0e0d2221061d1404fbf3f771927bee52692a1742e83612ff",
     // maintenance
     "0x1D562a307dF7CB1D28F59E834669eFcc7dE2E4Fc": "46a9e3f48366eb751718ef38dcd1ad3cdec530f2671e00323eb0d636478730a1",
     // bank
@@ -31,9 +31,9 @@ exports['default'] = {
   },
 
   encryptionKeys: {
-    // emily / bmvi
-    "0xb9f7cd2b202c009d574f4b7a5c0b3b85fd8affc1f46aea0d2e54783062daeb09": "acf87a5a53b228f282be7435ad027c6d3a24046bc33a39d851221f2680d95625",
-    "0xa1dc85a4bcd208c572702d1538e5587e666581aa1568818dcc5b447110536840": "acf87a5a53b228f282be7435ad027c6d3a24046bc33a39d851221f2680d95625",
+    // emily / owner
+    "0x4637f94d46f0d68b85d0172a198dca14c48c155c8fa64113437f331a008968ad": "0e2e9ae57c36647f3b4bd8c7bb591bcc3894e444a06e71e56aab7cc040f35a30",
+    "0x8299896298e6968ca9ff9096110bc04ed9556169a63d8a44600109d006958753": "0e2e9ae57c36647f3b4bd8c7bb591bcc3894e444a06e71e56aab7cc040f35a30",
     // maintenance
     "0xd97f754e4b22a7065a1f7819d4cd9eb62e9d6fadc7593211e67bf599215294c2": "add7c7d492267cd86815be8145058c403be89150d86bbc3bf09a87c5644630c8",
     "0x12cd43ab9988cd75c66c31fe7329cbd777fb87f183434a6ca293ec6a542532ee": "add7c7d492267cd86815be8145058c403be89150d86bbc3bf09a87c5644630c8",
@@ -49,10 +49,14 @@ exports['default'] = {
     return {
       ...defaultConfig,
       name: 'bmvi-data-run-emily',
-      ethAccount: '0xaDb25397Fe94968a22fE1b353290eFfB7c847a8F',
+      ethAccount: '0x0Ed0a2610034f0214BBBC43d6e4113E1eD4e3C19',
       streamInterval: 750, // 0.75 rows per second
       appvovalCheckInterval: 10000, // check every 10 seconds
-      emilies: carFiles
+      emilies: carFiles,
+      maintenanceFadeInterval: 1000,
+      maintenanceFadeStep: 0.05,
+      maintenanceX: 13.3572160165073,
+      maintenanceY: 52.4821613008757,
     }
   },
   smartAgentBmviDataRunInsurance: (api) => {
