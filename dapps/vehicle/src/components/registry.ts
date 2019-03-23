@@ -40,8 +40,8 @@ const componentRegistration: Array<ComponentRegistrationInterface> = [
   { name: 'l-map', component: LMap },
   { name: 'l-tile-layer', component: LTileLayer},
   { name: 'l-marker', component: LMarker},
-  { name: 'l-polyline', component: LPolyline}
-  { name: 'bmvi-erro', component: ErrorComponent}
+  { name: 'l-polyline', component: LPolyline},
+  { name: 'bmvi-error', component: ErrorComponent}
 ];
 
 export default componentRegistration;

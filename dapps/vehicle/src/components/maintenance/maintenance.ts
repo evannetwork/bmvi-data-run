@@ -63,6 +63,11 @@ export default class MaintenanceComponent extends Vue {
    */
   activeAccount = dappBrowser.core.activeAccount();
 
+  /**
+   * no permissions?
+   */
+  error: any;
+
   async created() {
     this.init();
   }
@@ -79,21 +84,25 @@ export default class MaintenanceComponent extends Vue {
       (<any>this).activeDApp().contractAddress
     );
 
-    // load metadata and merge the status entries together
-    const entries = await this.vehicle.getListEntries('maintenanceData',
-      this.activeAccount, true, true, Number.MAX_VALUE, 0, false);
-    const mappedEntries = { };
-    entries.forEach((entry) => {
-      if (entry.reference) {
-        mappedEntries[entry.reference] = Object.assign(
-          mappedEntries[entry.reference] || { },
-          entry
-        );
-      }
-    });
+    try {
+      // load metadata and merge the status entries together
+      const entries = await this.vehicle.getListEntries('maintenanceData',
+        this.activeAccount, true, true, Number.MAX_VALUE, 0, false);
+      const mappedEntries = { };
+      entries.forEach((entry) => {
+        if (entry.reference) {
+          mappedEntries[entry.reference] = Object.assign(
+            mappedEntries[entry.reference] || { },
+            entry
+          );
+        }
+      });
 
-    // map data to an array, so we can iterated easier
-    this.maintenanceData = Object.keys(mappedEntries).map(key => mappedEntries[key]);
+      // map data to an array, so we can iterated easier
+      this.maintenanceData = Object.keys(mappedEntries).map(key => mappedEntries[key]);
+    } catch (ex) {
+      this.error = ex;
+    }
 
     this.loading = false;
   }

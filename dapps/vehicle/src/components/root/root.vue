@@ -35,10 +35,12 @@
 
         <bmvi-error v-if="error && !loading">
           <template v-slot:button>
-            <button type="submit" class="btn btn-rounded btn-primary"
-              @click="backToList()">
-              <span>{{ '_bmvi.vehicle.back-to-list' | translate }}</span>
-            </button>
+            <div class="p-3 mt-3 text-center">
+              <button type="submit" class="btn btn-rounded btn-primary"
+                @click="backToList()">
+                <span>{{ '_bmvi.vehicle.back-to-list' | translate }}</span>
+              </button>
+            </div>
           </template>
         </bmvi-error>
 

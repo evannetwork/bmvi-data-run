@@ -26,10 +26,11 @@
 */
 
 <template>
-  <div class="p-3">
-    <div class="bg-level-1 border p-3">
-      <evan-loading v-if="loading"></evan-loading>
-      <template v-if="!loading">
+  <div>
+    <evan-loading v-if="loading"></evan-loading>
+    <bmvi-error v-if="error && !loading"></bmvi-error>
+    <div class="p-3" v-if="!loading && !error">
+      <div class="bg-level-1 border p-3 text-center mb-3">
         <div class="d-flex p-2 pt-3 pb-3 border-bottom">
           <h4 class="m-0">
             {{ `_bmvi.vehicle.area.zb1` | translate }}
@@ -44,7 +45,7 @@
             </tr>
           </tbody>
         </table>
-      </template>
+      </div>
     </div>
   </div>
 </template>

@@ -35,10 +35,7 @@
       </div>
 
       <div class="p-3" v-html="$t('_bmvi.vehicle.error-desc')"></div>
-
-      <div class="p-3 mt-3 text-center">
-        <slot name="button"></slot>
-      </div>
+      <slot name="button"></slot>
     </div>
   </div>
 </template>

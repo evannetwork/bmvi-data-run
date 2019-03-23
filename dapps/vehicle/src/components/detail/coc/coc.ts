@@ -66,7 +66,7 @@ export default class CocComponent extends Vue {
 
       // load metadata to show fin
       await this.vehicle.getEntry('cocData');
-    } catch(ex) {
+    } catch (ex) {
       this.error = ex;
     }
 

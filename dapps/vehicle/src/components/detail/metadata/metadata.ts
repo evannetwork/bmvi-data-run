@@ -64,23 +64,32 @@ export default class MetadataComponent extends Vue {
   registration = false;
 
   /**
+   * no permissions?
+   */
+  error: any;
+
+  /**
    * Load initial data for the twin
    */
   async created() {
+    try {
       // initialize vehicle
-    this.vehicle = BmviVehicle.getVehicle(
-      (<any>this).getRuntime(),
-      (<any>this).activeDApp().contractAddress
-    );
+      this.vehicle = BmviVehicle.getVehicle(
+        (<any>this).getRuntime(),
+        (<any>this).activeDApp().contractAddress
+      );
 
-    // load metadata to show fin
-    await this.vehicle.getEntry('metadata');
+      // load metadata to show fin
+      await this.vehicle.getEntry('metadata');
 
-    this.registration = await (<any>this).getRuntime().dataContract.getEntry(
-      (<any>this).activeDApp().contractAddress,
-      'approval',
-      this.activeAccount
-    );
+      this.registration = await (<any>this).getRuntime().dataContract.getEntry(
+        (<any>this).activeDApp().contractAddress,
+        'approval',
+        this.activeAccount
+      );
+    } catch (ex) {
+      this.error = ex;
+    }
 
     this.loading = false;
   }

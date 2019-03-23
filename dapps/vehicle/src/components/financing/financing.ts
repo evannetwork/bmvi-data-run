@@ -56,12 +56,21 @@ export default class FinancingComponent extends Vue {
    */
   activeAccount = dappBrowser.core.activeAccount();
 
+  /**
+   * no permissions?
+   */
+  error: any;
+
   async created() {
-    this.financing = await (<any>this).getRuntime().dataContract.getEntry(
-      (<any>this).activeDApp().contractAddress,
-      'financing',
-      this.activeAccount
-    );
+    try {
+      this.financing = await (<any>this).getRuntime().dataContract.getEntry(
+        (<any>this).activeDApp().contractAddress,
+        'financing',
+        this.activeAccount
+      );
+    } catch (ex) {
+      this.error = ex;
+    }
 
     this.loading = false;
   }

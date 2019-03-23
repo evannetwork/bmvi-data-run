@@ -26,9 +26,10 @@
 */
 
 <template>
-  <div class="p-3">
+  <div>
     <evan-loading v-if="loading"></evan-loading>
-    <template v-if="!loading">
+    <bmvi-error v-if="error && !loading"></bmvi-error>
+    <div class="p-3" v-if="!loading && !error">
       <div class="bg-level-1 border p-3 text-center mb-3">
         <i class="fas fa-check text-success m-4" style="font-size: 5em;" v-if="registration"></i>
         <i class="fas fa-times text-danger m-4" style="font-size: 5em;" v-if="!registration"></i>
@@ -149,7 +150,7 @@
           </tbody>
         </table>
       </div>
-    </template>
+    </div  class="p-3">
   </div>
 </template>
 

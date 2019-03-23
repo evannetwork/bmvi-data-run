@@ -27,9 +27,10 @@
 
 <template>
   <div>
-    <div class="bg-level-1 border p-3 m-3">
+    <bmvi-error v-if="error && !loading"></bmvi-error>
+    <div class="bg-level-1 border p-3 m-3" v-if="!error">
       <evan-loading v-if="loading"></evan-loading>
-      <template v-if="!loading">
+      <template v-if="!loading && !error">
         <div class="d-flex pb-3 pt-3 border-bottom align-items-center">
           <h4 class="m-0 mb-2">
             {{ `_bmvi.vehicle.nav.financing` | translate }}
