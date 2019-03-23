@@ -94,6 +94,10 @@ module.exports = {
         sharings, accountId, recipient, section, 0, key, null);
 
       await shareKeyWith('metadata', metadataKey, accountId);
+      await shareKeyWith('metadata', metadataKey, accounts.maintenance);
+      await shareKeyWith('metadata', metadataKey, accounts.insurance);
+      await shareKeyWith('metadata', metadataKey, accounts.bank);
+      await shareKeyWith('metadata', metadataKey, accounts.bmvi);
       await shareKeyWith('financing', financingKey, accountId);
       await shareKeyWith('financing', financingKey, accounts.bank);
       await shareKeyWith('cocData', cocDataKey, accountId);
