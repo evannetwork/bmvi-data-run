@@ -35,30 +35,32 @@
             {{ `_bmvi.vehicle.nav.maintenance` | translate }}
           </h4>
           <div class="mx-auto"></div>
-          <evan-modal ref="submitModal">
-            <template v-slot:header>
-              <h5 class="modal-title">
-                {{ '_bmvi.vehicle.set-repair.question' | translate }}
-              </h5>
-            </template>
-            <template v-slot:body>
-              <p>{{ '_bmvi.vehicle.set-repair.question-desc' | translate }}</p>
-            </template>
-            <template v-slot:footer>
-              <button type="button" class="btn btn-rounded btn-danger font-weight-normal"
-                @click="reportDamage(); $refs.submitModal.hideModal()">
-                {{ `_bmvi.vehicle.set-repair.title` | translate }}
-              </button>
-            </template>
-          </evan-modal>
-          <button type="submit" class="btn btn-rounded btn-danger d-flex align-items-center"
-            @click="$refs.submitModal.showModal()"
-            :disabled="syncing">
-            <div class="spinner-border spinner-border-sm text-light mr-3"
-              v-if="syncing">
-            </div>
-            <span>{{ '_bmvi.vehicle.set-repair.title' | translate }}</span>
-          </button>
+          <templace v-if="activeAccount === '0x0Ed0a2610034f0214BBBC43d6e4113E1eD4e3C19'">
+            <evan-modal ref="submitModal">
+              <template v-slot:header>
+                <h5 class="modal-title">
+                  {{ '_bmvi.vehicle.set-repair.question' | translate }}
+                </h5>
+              </template>
+              <template v-slot:body>
+                <p>{{ '_bmvi.vehicle.set-repair.question-desc' | translate }}</p>
+              </template>
+              <template v-slot:footer>
+                <button type="button" class="btn btn-rounded btn-danger font-weight-normal"
+                  @click="reportDamage(); $refs.submitModal.hideModal()">
+                  {{ `_bmvi.vehicle.set-repair.title` | translate }}
+                </button>
+              </template>
+            </evan-modal>
+            <button type="submit" class="btn btn-rounded btn-danger d-flex align-items-center"
+              @click="$refs.submitModal.showModal()"
+              :disabled="syncing">
+              <div class="spinner-border spinner-border-sm text-light mr-3"
+                v-if="syncing">
+              </div>
+              <span>{{ '_bmvi.vehicle.set-repair.title' | translate }}</span>
+            </button>
+          </templace>
         </div>
         <table class="table table-borderless mt-3">
           <thead>
