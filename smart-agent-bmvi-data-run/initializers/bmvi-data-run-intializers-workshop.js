@@ -32,7 +32,7 @@ module.exports = class SmartAgentBmvidatarunWorkshopWatcherInitializer extends I
           address,
           'maintenanceData',
           [{date: Date.now(), description: message}],
-          config.ethAccount,
+          this.config.ethAccount,
         )
       }
     }

@@ -108,6 +108,8 @@ contract EmilyDataContractFactory is BaseContractFactory {
             insuranceRole, 0, hashPropertyCapability(listentryLabel, "maintenanceData", setLabel), true);
         roles.setRoleOperationCapability(
             maintenanceRole, 0, hashPropertyCapability(listentryLabel, "maintenanceData", setLabel), true);
+        roles.setRoleOperationCapability(
+            bankRole, 0, hashPropertyCapability(listentryLabel, "maintenanceData", setLabel), true);
 
         // contract states
         bytes32 contractStateLabel = 0xf0af2cee3e7130dfb5ef02ebfaf64a30da17e9c9c26d3d40ece69a2e0ee1d69e;
