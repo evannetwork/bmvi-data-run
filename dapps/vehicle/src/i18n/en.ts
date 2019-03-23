@@ -87,7 +87,8 @@ export default {
         "detail": "General data",
         "financing": "Financing",
         "maintenance": "Repair- / Maintenance-Log",
-        "registration": "Approval"
+        "registration": "Approval",
+        "finish-repair": "Finish repair"
       },
       "registration": {
         "false": "Not approved",
@@ -104,6 +105,7 @@ export default {
         "question-desc": "Do you really want to report a damage?",
         "title": "Report a damage"
       },
+      "finish-repair": "Finish repair",
       "title": "Vehicle",
       "vehicle-specific": {
         "cubicCapacity": "Cubic capacity",

@@ -87,7 +87,8 @@ export default {
         "detail": "Generelle Daten",
         "financing": "Finanzierung",
         "maintenance": "Reperatur- / Wartungsprotokoll",
-        "registration": "Zulassung"
+        "registration": "Zulassung",
+        "finish-repair": "Reparatur abschließen"
       },
       "registration": {
         "false": "Nicht zugelassen",
@@ -104,6 +105,7 @@ export default {
         "question-desc": "Wollen Sie wirklich einen Schaden melden?",
         "title": "Schaden melden"
       },
+      "finish-repair": "Reparatur abschließen",
       "title": "Fahrzeug",
       "vehicle-specific": {
         "cubicCapacity": "Hubraum",
