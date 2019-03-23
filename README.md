@@ -30,11 +30,18 @@ All these different stakeholders have their own view to the data of the vehicle 
 
 # Team
 Anja Wilde - Project lead and good fairy
+
 Sebastian Dechant - Concept and organization
+
 Sebastian Wolfram - Backend and Smart Contract wizard
-Tobias Winkler - Frontent voodoo priest
+
+Tobias Winkler - Frontend voodoo priest
+
 
 # More informations about evan.network
+
 https://evan.network
+
 https://evannetwork.github.io
+
 https://dashboard.test.evan.network
