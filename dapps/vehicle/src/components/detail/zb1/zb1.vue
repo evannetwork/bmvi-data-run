@@ -29,9 +29,22 @@
   <div class="p-3">
     <div class="bg-level-1 border p-3">
       <evan-loading v-if="loading"></evan-loading>
-      <div v-if="!loading">
-        {{ data }}
-      </div>
+      <template v-if="!loading">
+        <div class="d-flex p-2 pt-3 pb-3 border-bottom">
+          <h4 class="m-0">
+            {{ `_bmvi.vehicle.area.zb1` | translate }}
+          </h4>
+        </div>
+
+        <table class="table table-borderless mt-3">
+          <tbody>
+            <tr
+              <td style="width:300px">{{ `_bmvi.vehicle.zb1.firstRegistrationDate` | translate }}</td>
+              <td>{{ vehicle.zb1.firstRegistrationDate }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </template>
     </div>
   </div>
 </template>

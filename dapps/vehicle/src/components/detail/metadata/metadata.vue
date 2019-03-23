@@ -40,12 +40,12 @@
           <tbody>
             <tr
               v-for="(field, index) in [ 'fin', 'hsn', 'modelKeyNumber', 'processNumber', 'tsn' ]">
-              <td>{{ `_bmvi.vehicle.identification.${ field }` | translate }}</td>
+              <td style="width:300px">{{ `_bmvi.vehicle.identification.${ field }` | translate }}</td>
               <td>{{ vehicle.metadata[field] }}</td>
             </tr>
             <tr
               v-for="(field, index) in vehicle.identifiers">
-              <td>{{ `_bmvi.vehicle.identification.${ field }` | translate }}</td>
+              <td style="width:300px">{{ `_bmvi.vehicle.identification.${ field }` | translate }}</td>
               <td>{{ vehicle.identifiers[field] }}</td>
             </tr>
           </tbody>
@@ -61,9 +61,9 @@
         <table class="table table-borderless mt-3">
           <tbody>
             <tr
-              v-for="(field, index) in [ 'fuel', 'type',  ]">
-              <td>{{ `_bmvi.vehicle.engine.${ field }` | translate }}</td>
-              <td>{{ `_bmvi.vehicle.engine.${ vehicle.metadata[field] }` | translate }}</td>
+              v-for="(field, index) in [ 'fuel', 'type', ]">
+              <td style="width:300px">{{ `_bmvi.vehicle.engine.${ field }` | translate }}</td>
+              <td>{{ `_bmvi.vehicle.engine.${ vehicle.metadata.engine[field] }` | translate }}</td>
             </tr>
           </tbody>
         </table>
@@ -79,8 +79,8 @@
           <tbody>
             <tr
               v-for="(field, index) in [ 'cubicCapacity', 'doors', 'kw', 'ps' ]">
-              <td>{{ `_bmvi.vehicle.vehicle-specific.${ field }` | translate }}</td>
-              <td>{{ vehicle.metadata[field] }}</td>
+              <td style="width:300px">{{ `_bmvi.vehicle.vehicle-specific.${ field }` | translate }}</td>
+              <td>{{ vehicle.metadata.vehicleSpecific[field] }}</td>
             </tr>
           </tbody>
         </table>
@@ -95,8 +95,8 @@
         <table class="table table-borderless mt-3">
           <tbody>
             <tr
-              v-for="(field, index) in vehicle.furtherInformation">
-              <td>{{ field.id }}</td>
+              v-for="(field, index) in vehicle.metadata.furtherInformation">
+              <td style="width:300px">{{ field.id }}</td>
               <td>{{ field.desc }}</td>
             </tr>
           </tbody>

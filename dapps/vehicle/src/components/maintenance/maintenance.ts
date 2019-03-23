@@ -64,7 +64,7 @@ export default class MaintenanceComponent extends Vue {
     );
 
     // load metadata to show fin
-    await this.vehicle.getEntry('maintenanceData');
+    await this.vehicle.getListEntries('maintenanceData');
     this.loading = false;
   }
 

@@ -32,11 +32,12 @@ export default {
       "area": {
         "coc": "Coc",
         "metadata": "Metadaten",
-        "zb1": "ZB |",
-        "zb2": "ZB ||"
+        "zb1": "ZB I",
+        "zb2": "ZB II"
       },
       "back-to-list": "Zurück zur Flottenübersicht",
       "engine": {
+        "diesel": "Diesel",
         "engine": "Motor",
         "fuel": "Kraftstoff",
         "title": "Motor",
@@ -68,7 +69,20 @@ export default {
         "cubicCapacity": "Hubraum",
         "doors": "Anzahl Türen",
         "kw": "KW",
-        "ps": "PS"
+        "ps": "PS",
+        "title": "Fahrzeugspezifische Informationen"
+      },
+      "coc": {
+        "execution": "Ausführung",
+        "factoryBrand": "Fabrikmarke",
+        "type": "Typ",
+        "variant": "Variante"
+      },
+      "zb1": {
+        "firstRegistrationDate": "Erstzulassung"
+      },
+      "zb2": {
+        "registrationNumber": "Registrierungsnummer"
       }
     }
   }

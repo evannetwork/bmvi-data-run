@@ -49,14 +49,19 @@
             <tr class="clickable"
               v-for="(vehicle, index) in vehicles"
               @click="openVehicle(vehicle)">
-              <template v-if="vehicle.loading">
+              <template v-if="vehicle.loading || vehicle.error">
                 <th class="text-primary">
-                  <div class="spinner-border text-secondary"></div>
                 </th>
                 <td></td>
-                <td></td>
+                <td text-center>
+                  <div class="spinner-border spinner-border-sm text-secondary"
+                    v-if="vehicle.loading"></div>
+                  <i class="fa fas-exclamation text-danger"
+                    v-if="vehicle.error">
+                  </i>
+                </td>
               </template>
-              <template v-if="!vehicle.loading">
+              <template v-if="!vehicle.loading && !vehicle.error">
                 <td class="text-primary">{{ vehicle.metadata.fin }}</td>
                 <td>{{ vehicle.cocData.factoryBrand }}</td>
                 <td>{{ vehicle.cocData.variant }}</td>

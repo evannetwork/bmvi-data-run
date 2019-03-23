@@ -32,11 +32,12 @@ export default {
       "area": {
         "coc": "Coc",
         "metadata": "Metadata",
-        "zb1": "ZB |",
-        "zb2": "ZB ||"
+        "zb1": "ZB I",
+        "zb2": "ZB II"
       },
       "back-to-list": "Back to fleet overview",
       "engine": {
+        "diesel": "Diesel",
         "engine": "Engine",
         "fuel": "Fuel",
         "title": "Engine",
@@ -68,7 +69,20 @@ export default {
         "cubicCapacity": "Cubic capacity",
         "doors": "Number of doors",
         "kw": "KW",
-        "ps": "PS"
+        "ps": "PS",
+        "title": "Vehicle specific informations"
+      },
+      "coc": {
+        "execution": "Execution",
+        "factoryBrand": "Factory Brand",
+        "type": "Type",
+        "variant": "Variant"
+      },
+      "zb1": {
+        "firstRegistrationDate": "First registration date"
+      },
+      "zb2": {
+        "registrationNumber": "Registration number"
       }
     }
   }

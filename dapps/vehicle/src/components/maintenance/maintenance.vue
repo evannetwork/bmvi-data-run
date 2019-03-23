@@ -47,6 +47,7 @@
         <tbody>
           <tr
             v-for="(field, index) in vehicle.maintenanceData">
+            <td>{{ field }}</td>
             <td>{{ field.date }}</td>
             <td>{{ field.description }}</td>
           </tr>
