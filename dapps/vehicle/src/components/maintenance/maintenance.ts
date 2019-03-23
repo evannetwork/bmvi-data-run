@@ -56,18 +56,24 @@ export default class MaintenanceComponent extends Vue {
   /**
    * All list entries
    */
-  maintenanceData = { };
+  maintenanceData = [ ];
 
   /**
    * current logged in user
    */
   activeAccount = dappBrowser.core.activeAccount();
 
+  async created() {
+    this.init();
+  }
+
   /**
    * Load initial data for the twin
    */
-  async created() {
-      // initialize vehicle
+  async init() {
+    this.loading = true;
+
+    // initialize vehicle
     this.vehicle = BmviVehicle.getVehicle(
       (<any>this).getRuntime(),
       (<any>this).activeDApp().contractAddress
@@ -76,12 +82,18 @@ export default class MaintenanceComponent extends Vue {
     // load metadata and merge the status entries together
     const entries = await this.vehicle.getListEntries('maintenanceData',
       this.activeAccount, true, true, Number.MAX_VALUE, 0, false);
+    const mappedEntries = { };
     entries.forEach((entry) => {
-      this.maintenanceData[entry.reference] = Object.assign(
-        this.maintenanceData[entry.reference] || { },
-        entry
-      );
+      if (entry.reference) {
+        mappedEntries[entry.reference] = Object.assign(
+          mappedEntries[entry.reference] || { },
+          entry
+        );
+      }
     });
+
+    // map data to an array, so we can iterated easier
+    this.maintenanceData = Object.keys(mappedEntries).map(key => mappedEntries[key]);
 
     this.loading = false;
   }
@@ -99,20 +111,22 @@ export default class MaintenanceComponent extends Vue {
       this.activeAccount
     )
     this.syncing = false;
+    this.init();
   }
 
   /**
    * Finish a maintenance
    */
-  async finishMaintenance() {
+  async finishMaintenance(reference: string) {
     const runtime = (<any>this).getRuntime();
     this.syncing = true;
     await runtime.dataContract.addListEntries(
       (<any>this).activeDApp().contractAddress,
       'maintenanceData',
-      [{maintenanceFinished: true}],
+      [{ reference: reference, maintenanceFinished: true }],
       this.activeAccount
     )
     this.syncing = false;
+    this.init();
   }
 }
