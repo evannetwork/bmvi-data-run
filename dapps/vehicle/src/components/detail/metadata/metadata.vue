@@ -51,13 +51,13 @@
             <template v-slot:footer>
               <button type="button" class="btn btn-rounded font-weight-normal"
                 :class="{ 'btn-danger': registration, 'btn-success': !registration }"
-                @click="setRegistration(); $refs.submitModal.hideModal()">
+                @click="setRegistration(); $refs.submitModal.hide()">
                 {{ `_bmvi.vehicle.registration.set.${ !registration }` | translate }}
               </button>
             </template>
           </evan-modal>
           <button type="submit" class="btn btn-rounded d-flex align-items-center"
-            @click="$refs.submitModal.showModal()"
+            @click="$refs.submitModal.show()"
             :class="{ 'btn-danger': registration, 'btn-success': !registration }"
             :disabled="syncing">
             <div class="spinner-border spinner-border-sm text-light mr-3"

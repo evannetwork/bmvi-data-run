@@ -64,7 +64,7 @@
                   </h4>
                 </div>
 
-                <ul class="nav small font-medium in w-100 mb-3 mt-auto">
+                <ul class="nav font-medium in w-100 mb-3 mt-auto">
                   <li class="w-100 p-4 clickable d-flex"
                     v-for="(route, index) in routes"
                     :class="{ 'active': isActive(route) }"

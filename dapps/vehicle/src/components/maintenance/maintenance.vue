@@ -48,13 +48,13 @@
               </template>
               <template v-slot:footer>
                 <button type="button" class="btn btn-rounded btn-danger font-weight-normal"
-                  @click="reportDamage(); $refs.submitModal.hideModal()">
+                  @click="reportDamage(); $refs.submitModal.hide()">
                   {{ `_bmvi.vehicle.set-repair.title` | translate }}
                 </button>
               </template>
             </evan-modal>
             <button type="submit" class="btn btn-rounded btn-danger d-flex align-items-center mr-3"
-              @click="$refs.submitModal.showModal()"
+              @click="$refs.submitModal.show()"
               :disabled="syncing">
               <div class="spinner-border spinner-border-sm text-light mr-3"
                 v-if="syncing">
@@ -101,13 +101,13 @@
                   </template>
                   <template v-slot:footer>
                     <button type="button" class="btn btn-rounded btn-success font-weight-normal"
-                      @click="finishMaintenance(value.reference); $refs.finishMaintenance[index].hideModal()">
+                      @click="finishMaintenance(value.reference); $refs.finishMaintenance[index].hide()">
                       {{ `_bmvi.vehicle.finish-maintenance.title` | translate }}
                     </button>
                   </template>
                 </evan-modal>
                 <button type="submit" class="btn btn-rounded btn-outline-success icon-only"
-                  @click="$refs.finishMaintenance[index].showModal()">
+                  @click="$refs.finishMaintenance[index].show()">
                   <i class="fas fa-check"></i>
                 </button>
               </td>

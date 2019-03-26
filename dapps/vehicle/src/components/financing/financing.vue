@@ -59,13 +59,13 @@
               <template v-slot:footer>
                 <button type="button" class="btn btn-rounded font-weight-normal"
                   :class="{ 'btn-danger': financing, 'btn-success': !financing }"
-                  @click="setFinancing(); $refs.submitModal.hideModal()">
+                  @click="setFinancing(); $refs.submitModal.hide()">
                   {{ `_bmvi.vehicle.financing.set.${ !financing }` | translate }}
                 </button>
               </template>
             </evan-modal>
             <button type="submit" class="btn btn-rounded d-flex align-items-center"
-              @click="$refs.submitModal.showModal()"
+              @click="$refs.submitModal.show()"
               :class="{ 'btn-danger': financing, 'btn-success': !financing }"
               :disabled="syncing">
               <div class="spinner-border spinner-border-sm text-light mr-3"

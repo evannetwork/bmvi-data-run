@@ -26,7 +26,7 @@
 */
 // import evan libs
 import { RouteRegistrationInterface } from '@evan.network/ui-vue-core';
-import { DAppLoaderComponent } from '@evan.network/ui-vue-core';
+import { DAppLoader } from '@evan.network/ui-vue-core';
 
 import CocComponent from './components/detail/coc/coc.vue';
 import CourseComponent from './components/course/course.vue';

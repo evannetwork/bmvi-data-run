@@ -27,18 +27,19 @@
 
 // vue imports
 import Vue from 'vue';
-import Component from 'vue-class-component';
+import Component, { mixins } from 'vue-class-component';
 import { Prop } from 'vue-property-decorator';
 import axios from 'axios';
 
 // evan.network imports
+import { EvanComponent } from '@evan.network/ui-vue-core';
 import * as bcc from '@evan.network/api-blockchain-core';
 import * as dappBrowser from '@evan.network/ui-dapp-browser';
 
 import { BmviVehicle } from 'vehicle.bmvi';
 
 @Component({ })
-export default class ListComponent extends Vue {
+export default class ListComponent extends mixins(EvanComponent) {
   /**
    * Show loading indicator
    */
