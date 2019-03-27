@@ -69,7 +69,7 @@
                     v-for="(route, index) in routes"
                     :class="{ 'active': isActive(route) }"
                     @click="evanNavigate(route)">
-                    <span>{{ `_bmvi.vehicle.nav.${ route }` | translate }}</span>
+                    <span v-html="$t(`_bmvi.vehicle.nav.${ route }`)"></span>
                     <span class="mx-auto"></span>
                     <i class="fas fa-chevron-right"></i>
                   </li>

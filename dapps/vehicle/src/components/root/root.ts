@@ -35,6 +35,8 @@ import { EvanComponent } from '@evan.network/ui-vue-core';
 import * as bcc from '@evan.network/api-blockchain-core';
 import * as dappBrowser from '@evan.network/ui-dapp-browser';
 
+import './root.scss';
+
 import BmviVehicle from '../../bmvi-vehicle';
 
 @Component({ })
