@@ -9,7 +9,8 @@
   "dependencies": {
     "request": "2.87.0",
     "streamr-client": "^1.0.0",
-    "abi-decoder": "^1.2.0"
+    "abi-decoder": "^1.2.0",
+    "csv-parser": "^2.2.0"
   },
   "resolutions": {
     "streamr-client/web3": "1.0.0-beta.37"
