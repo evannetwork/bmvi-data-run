@@ -29,13 +29,14 @@
   <div>
     <div class="text-center">
       <br>
-      <h3 class="text-secondary mt-3 font-weight-bold">{{ '_bmvi.welcome-to-bmvi' | translate }}
-      </h3>
+      <h4 class="text-secondary mt-3 font-weight-bold">
+        {{ '_bmvi.welcome-to-bmvi' | translate }}
+      </h4>
 
       <img class="img-fluid col-6 col-md-3 m-3"
         :src="`${ $store.state.bmviBaseUrl }/assets/data-run.png`">
 
-      <h2>{{ '_bmvi.startup' | translate }}</h2>
+      <h2 class="mt-4">{{ '_bmvi.startup' | translate }}</h2>
       <br>
     </div>
     <div class="d-md-flex container flex-wrap justify-content-center">
@@ -51,9 +52,9 @@
         <h3>
           {{ `_bmvi.overview.${ type.title }.title` | translate }}
         </h3>
-        <small class="text-muted">
+        <span class="text-muted">
           {{ `_bmvi.overview.${ type.title }.desc` | translate }}
-        </small>
+        </span>
       </div>
     </div>
   </div>
