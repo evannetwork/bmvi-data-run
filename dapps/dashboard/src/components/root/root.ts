@@ -47,7 +47,7 @@ export default class DashboardRootComponent extends mixins(EvanComponent) {
    * Basic routes for the custom dashboard navigation
    */
   routes = [
-    { title: `_bmvi.routes.vehicles`, path: `list`, icon: 'fas fa-car' },
-    { title: `_bmvi.routes.usecase`, path: `usecase`, icon: 'fas fa-info' },
+    { title: `_bmvi.routes.vehicles`, path: `list`, icon: 'mdi mdi-car' },
+    { title: `_bmvi.routes.usecase`, path: `usecase`, icon: 'mdi mdi-information' },
   ];
 }

@@ -40,12 +40,12 @@ export default class OverviewComponent extends mixins(EvanComponent) {
   dashboardEntries: Array<any> = [
     {
       title: 'usecase',
-      icon: 'fas fa-info p-4 xxxl text-primary',
+      icon: 'mdi mdi-information p-4 xxxl text-primary',
       path: 'usecase',
     },
     {
       title: 'vehicles',
-      icon: 'fas fa-car p-4 xxxl text-secondary',
+      icon: 'mdi mdi-car p-4 xxxl text-secondary',
       path: 'list',
     },
   ];

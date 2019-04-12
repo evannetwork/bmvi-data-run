@@ -82,8 +82,8 @@
               <td>
                 <ul class="list-unstyled">
                   <li v-for="(status, index) in [ 'bankApproved', 'insuraceApproved', 'maintenanceApproved', 'maintenanceFinished' ]">
-                    <i class="mr-3 fas fa-check text-success" style="width: 16px" v-if="value[status]"></i>
-                    <i class="mr-3 fas fa-times text-danger" style="width: 16px" v-if="!value[status]"></i>
+                    <i class="mr-3 mdi mdi-check text-success" style="width: 16px" v-if="value[status]"></i>
+                    <i class="mr-3 mdi mdi-close text-danger" style="width: 16px" v-if="!value[status]"></i>
                     {{ `_bmvi.vehicle.maintenance.${ status }` | translate }}
                   </li>
                 </ul>
@@ -108,7 +108,7 @@
                 </evan-modal>
                 <button type="submit" class="btn btn-rounded btn-outline-success icon-only"
                   @click="$refs.finishMaintenance[index].show()">
-                  <i class="fas fa-check"></i>
+                  <i class="mdi mdi-check"></i>
                 </button>
               </td>
             </tr>

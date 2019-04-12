@@ -54,7 +54,7 @@
               <div class="w300">
                 <div class="d-flex pl-2 pr-4 pt-3 pb-3 align-items-center justify-content-between border-bottom">
                   <h5 class="font-weight-bolder text-nowrap mr-3">
-                    <i class="clickable fas fa-chevron-left mr-3"
+                    <i class="clickable mdi mdi-chevron-left mr-3"
                       @click="backToList()">
                     </i>
                     {{ '_bmvi.vehicle.title' | translate }}
@@ -71,7 +71,7 @@
                     @click="evanNavigate(route)">
                     <span v-html="$t(`_bmvi.vehicle.nav.${ route }`)"></span>
                     <span class="mx-auto"></span>
-                    <i class="fas fa-chevron-right"></i>
+                    <i class="mdi mdi-chevron-right"></i>
                   </li>
                 </ul>
               </div>

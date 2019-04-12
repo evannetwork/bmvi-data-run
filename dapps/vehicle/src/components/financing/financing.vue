@@ -38,8 +38,8 @@
         </div>
 
         <div class="text-center">
-          <i class="fas fa-check text-success m-4" style="font-size: 5em;" v-if="financing"></i>
-          <i class="fas fa-times text-danger m-4" style="font-size: 5em;" v-if="!financing"></i>
+          <i class="mdi mdi-check text-success m-4" style="font-size: 5em;" v-if="financing"></i>
+          <i class="mdi mdi-close text-danger m-4" style="font-size: 5em;" v-if="!financing"></i>
 
           <h3 class="m-3">
             {{ `_bmvi.vehicle.financing.${ financing }` | translate }}
