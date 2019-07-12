@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "@evan.network/edge-server-seed": "^1.0.0",
+    "@evan.network/edge-server-seed": "^1.6.2",
     "abi-decoder": "^1.2.0",
     "csv-parser": "^2.2.0",
     "eth-lightwallet": "^3.0.1",
@@ -15,8 +15,8 @@
   },
   "description": "BMVI Data-Run project",
   "devDependencies": {
-    "@evan.network/api-blockchain-core": "^2.3.0",
-    "@evan.network/smart-contracts-core": "^2.1.1",
+    "@evan.network/api-blockchain-core": "^2.8.3",
+    "@evan.network/smart-contracts-core": "^2.4.2",
     "axios": "^0.18.0",
     "babel-core": "^6.26.3",
     "babel-loader": "^7.0.0",
@@ -67,5 +67,5 @@
     "deploy": "gulp --gulpfile node_modules/@evan.network/ui-dapp-browser/gulp/deployment.js deploy --config /Users/swo/swo/evan.network/customers/bmvi-data-run/scripts/config/deployment.js",
     "start": "cd node_modules/@evan.network/edge-server-seed && npm start"
   },
-  "version": "1.0.0"
+  "version": "1.0.1"
 }
