@@ -27,10 +27,11 @@
 
 // vue imports
 import Vue from 'vue';
-import Component from 'vue-class-component';
+import Component, { mixins } from 'vue-class-component';
 import { Prop } from 'vue-property-decorator';
 
 // evan.network imports
+import { EvanComponent } from '@evan.network/ui-vue-core';
 import * as bcc from '@evan.network/api-blockchain-core';
 import * as dappBrowser from '@evan.network/ui-dapp-browser';
 
@@ -39,7 +40,7 @@ declare let L: any;
 import StreamrClient from 'streamr-client/dist/streamr-client.web.min.js';
 
 @Component({ })
-export default class CourseComponent extends Vue {
+export default class CourseComponent extends mixins(EvanComponent) {
    config = {
     zoom: 20,
     lat: 47.413220,
@@ -61,7 +62,7 @@ export default class CourseComponent extends Vue {
 
     // Create a stream for this example if it doesn't exist
     client.getOrCreateStream({
-        name: (<any>this).activeDApp().contractAddress,
+        name: (<any>this).dapp.contractAddress,
     }).then((stream) => {
       client.subscribe(
         {stream: stream.id},

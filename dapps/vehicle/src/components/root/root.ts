@@ -27,17 +27,20 @@
 
 // vue imports
 import Vue from 'vue';
-import Component from 'vue-class-component';
+import Component, { mixins } from 'vue-class-component';
 import { Prop } from 'vue-property-decorator';
 
 // evan.network imports
+import { EvanComponent } from '@evan.network/ui-vue-core';
 import * as bcc from '@evan.network/api-blockchain-core';
 import * as dappBrowser from '@evan.network/ui-dapp-browser';
+
+import './root.scss';
 
 import BmviVehicle from '../../bmvi-vehicle';
 
 @Component({ })
-export default class DashboardRootComponent extends Vue {
+export default class DashboardRootComponent extends mixins(EvanComponent) {
   /**
    * show a loading symbol
    */
@@ -72,7 +75,7 @@ export default class DashboardRootComponent extends Vue {
       // initialize vehicle
       this.vehicle = BmviVehicle.getVehicle(
         (<any>this).getRuntime(),
-        (<any>this).activeDApp().contractAddress
+        (<any>this).dapp.contractAddress
       );
 
       // load metadata to show fin
@@ -98,6 +101,6 @@ export default class DashboardRootComponent extends Vue {
    * @param      {any}  route   The route
    */
   isActive(route: any): boolean {
-    return this.$route.path.startsWith(`${ (<any>this).activeDApp().baseHash }/${ route }`);
+    return (<any>this).$route.path.startsWith(`${ (<any>this).dapp.baseHash }/${ route }`);
   }
 }

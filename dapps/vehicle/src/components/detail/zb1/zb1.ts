@@ -27,17 +27,18 @@
 
 // vue imports
 import Vue from 'vue';
-import Component from 'vue-class-component';
+import Component, { mixins } from 'vue-class-component';
 import { Prop } from 'vue-property-decorator';
 
 // evan.network imports
+import { EvanComponent } from '@evan.network/ui-vue-core';
 import * as bcc from '@evan.network/api-blockchain-core';
 import * as dappBrowser from '@evan.network/ui-dapp-browser';
 
 import BmviVehicle from '../../../bmvi-vehicle';
 
 @Component({ })
-export default class MetadataComponent extends Vue {
+export default class MetadataComponent extends mixins(EvanComponent) {
   /**
    * show the loading indicator
    */
@@ -61,7 +62,7 @@ export default class MetadataComponent extends Vue {
       // initialize vehicle
       this.vehicle = BmviVehicle.getVehicle(
         (<any>this).getRuntime(),
-        (<any>this).activeDApp().contractAddress
+        (<any>this).dapp.contractAddress
       );
 
       // load metadata to show fin

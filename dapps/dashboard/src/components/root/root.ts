@@ -27,24 +27,27 @@
 
 // vue imports
 import Vue from 'vue';
-import Component from 'vue-class-component';
+import Component, { mixins } from 'vue-class-component';
 import { Prop } from 'vue-property-decorator';
 
 // evan.network imports
+import { EvanComponent } from '@evan.network/ui-vue-core';
 import * as bcc from '@evan.network/api-blockchain-core';
 import * as dappBrowser from '@evan.network/ui-dapp-browser';
+
+import './root.scss';
 
 // load domain name for quick usage
 const domainName = dappBrowser.getDomainName();
 const i18nPref = '_evan._routes';
 
 @Component({ })
-export default class DashboardRootComponent extends Vue {
+export default class DashboardRootComponent extends mixins(EvanComponent) {
   /**
    * Basic routes for the custom dashboard navigation
    */
   routes = [
-    { title: `_bmvi.routes.vehicles`, path: `list`, icon: 'fas fa-car' },
-    { title: `_bmvi.routes.usecase`, path: `usecase`, icon: 'fas fa-info' },
+    { title: `_bmvi.routes.vehicles`, path: `list`, icon: 'mdi mdi-car' },
+    { title: `_bmvi.routes.usecase`, path: `usecase`, icon: 'mdi mdi-information' },
   ];
 }

@@ -27,15 +27,16 @@
 
 // vue imports
 import Vue from 'vue';
-import Component from 'vue-class-component';
+import Component, { mixins } from 'vue-class-component';
 import { Prop } from 'vue-property-decorator';
 
 // evan.network imports
+import { EvanComponent } from '@evan.network/ui-vue-core';
 import * as bcc from '@evan.network/api-blockchain-core';
 import * as dappBrowser from '@evan.network/ui-dapp-browser';
 
 @Component({ })
-export default class FinancingComponent extends Vue {
+export default class FinancingComponent extends mixins(EvanComponent) {
   /**
    * load initial data
    */
@@ -64,7 +65,7 @@ export default class FinancingComponent extends Vue {
   async created() {
     try {
       this.financing = await (<any>this).getRuntime().dataContract.getEntry(
-        (<any>this).activeDApp().contractAddress,
+        (<any>this).dapp.contractAddress,
         'financing',
         this.activeAccount
       );
@@ -83,7 +84,7 @@ export default class FinancingComponent extends Vue {
 
     this.financing = !this.financing;
     await (<any>this).getRuntime().dataContract.setEntry(
-      (<any>this).activeDApp().contractAddress,
+      (<any>this).dapp.contractAddress,
       'financing',
       this.financing,
       this.activeAccount

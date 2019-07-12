@@ -3,18 +3,19 @@
     "author": "evan GmbH",
     "dapp": {
       "dependencies": {
-        "evancore.vue.libs": "^1.0.0",
+        "evancore.vue.libs": "^1.2.4",
         "leaflet.vue.libs": "^3.1.0"
       },
       "entrypoint": "vehicle.bmvi.js",
       "files": [
-        "vehicle.bmvi.js"
+        "vehicle.bmvi.js",
+        "vehicle.bmvi.css"
       ],
       "primaryColor": "#004f7d",
       "secondaryColor": "#f9f9ff",
       "standalone": true,
       "type": "dapp",
-      "origin": "QmW2YK7kP5qBBaWAHEgSuPQ9yS6M7U1bXH8KDbSahMXFxC"
+      "origin": "QmNYoBD8g7KKgoPX3rdgWVZ3r3ZXGiiQdBpZZojmWADsU9"
     },
     "dbcpVersion": 2,
     "description": "Root app for displaying navigation ",
@@ -38,7 +39,7 @@
     ],
     "version": "1.0.0",
     "versions": {
-      "1.0.0": "QmTQYqLgydH14swmoum6faJHhJ1CmW9BoN7fBreJqg3joe"
+      "1.0.0": "QmX5noNFSFF5S9L5WkpgVsH74hG348d6wes5LJKEXgs7FQ"
     }
   }
 }

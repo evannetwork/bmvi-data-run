@@ -1,12 +1,12 @@
 /*
   Copyright (c) 2018-present evan GmbH.
- 
+
   Licensed under the Apache License, Version 2.0 (the "License");
   you may not use this file except in compliance with the License.
   You may obtain a copy of the License at
- 
+
       http://www.apache.org/licenses/LICENSE-2.0
- 
+
   Unless required by applicable law or agreed to in writing, software
   distributed under the License is distributed on an "AS IS" BASIS,
   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -38,8 +38,9 @@ let dfs;
 let runtimes;
 
 gulp.task('init-profiles', async () => {
-  web3 = new Web3();
-  web3.setProvider(new web3.providers.WebsocketProvider(runtimeConfig.web3Provider));
+  const wsp = new Web3.providers.WebsocketProvider(
+       runtimeConfig.web3Provider, { clientConfig: { keepalive: true, keepaliveInterval: 5000 } });
+  web3 = new Web3(wsp, null, { transactionConfirmationBlocks: 1 });
 
   await buildKeyConfig(web3, runtimeConfig);
   await checkBalances(web3, runtimeConfig);

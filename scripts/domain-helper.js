@@ -13,17 +13,9 @@ const claimDomain = async (domain, mnemonic) => {
 
 const getRuntime = async (mnemonic) => {
   // setup dependencies
-  const web3 = new Web3();
-  const websocketProvider = new web3.providers.WebsocketProvider(
-    runtimeConfig.web3Provider,
-    {
-      clientConfig: {
-        keepalive: true,
-        keepaliveInterval:5000
-      }
-    }
-  );
-  web3.setProvider(websocketProvider);
+  const wsp = new Web3.providers.WebsocketProvider(
+       runtimeConfig.web3Provider, { clientConfig: { keepalive: true, keepaliveInterval: 5000 } });
+  const web3 = new Web3(wsp, null, { transactionConfirmationBlocks: 1 });
   // insert mnemonic if unknown
   if (!runtimeConfig.mnemonics[mnemonic]) {
     runtimeConfig.mnemonics[mnemonic] = 'no data interaction, therefore no password';

@@ -48,13 +48,13 @@
               </template>
               <template v-slot:footer>
                 <button type="button" class="btn btn-rounded btn-danger font-weight-normal"
-                  @click="reportDamage(); $refs.submitModal.hideModal()">
+                  @click="reportDamage(); $refs.submitModal.hide()">
                   {{ `_bmvi.vehicle.set-repair.title` | translate }}
                 </button>
               </template>
             </evan-modal>
             <button type="submit" class="btn btn-rounded btn-danger d-flex align-items-center mr-3"
-              @click="$refs.submitModal.showModal()"
+              @click="$refs.submitModal.show()"
               :disabled="syncing">
               <div class="spinner-border spinner-border-sm text-light mr-3"
                 v-if="syncing">
@@ -82,8 +82,8 @@
               <td>
                 <ul class="list-unstyled">
                   <li v-for="(status, index) in [ 'bankApproved', 'insuraceApproved', 'maintenanceApproved', 'maintenanceFinished' ]">
-                    <i class="mr-3 fas fa-check text-success" style="width: 16px" v-if="value[status]"></i>
-                    <i class="mr-3 fas fa-times text-danger" style="width: 16px" v-if="!value[status]"></i>
+                    <i class="mr-3 mdi mdi-check text-success" style="width: 16px" v-if="value[status]"></i>
+                    <i class="mr-3 mdi mdi-close text-danger" style="width: 16px" v-if="!value[status]"></i>
                     {{ `_bmvi.vehicle.maintenance.${ status }` | translate }}
                   </li>
                 </ul>
@@ -101,14 +101,14 @@
                   </template>
                   <template v-slot:footer>
                     <button type="button" class="btn btn-rounded btn-success font-weight-normal"
-                      @click="finishMaintenance(value.reference); $refs.finishMaintenance[index].hideModal()">
+                      @click="finishMaintenance(value.reference); $refs.finishMaintenance[index].hide()">
                       {{ `_bmvi.vehicle.finish-maintenance.title` | translate }}
                     </button>
                   </template>
                 </evan-modal>
                 <button type="submit" class="btn btn-rounded btn-outline-success icon-only"
-                  @click="$refs.finishMaintenance[index].showModal()">
-                  <i class="fas fa-check"></i>
+                  @click="$refs.finishMaintenance[index].show()">
+                  <i class="mdi mdi-check"></i>
                 </button>
               </td>
             </tr>

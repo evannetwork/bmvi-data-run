@@ -31,8 +31,8 @@
     <bmvi-error v-if="error && !loading"></bmvi-error>
     <div class="p-3" v-if="!loading && !error">
       <div class="bg-level-1 border p-3 text-center mb-3">
-        <i class="fas fa-check text-success m-4" style="font-size: 5em;" v-if="registration"></i>
-        <i class="fas fa-times text-danger m-4" style="font-size: 5em;" v-if="!registration"></i>
+        <i class="mdi mdi-check text-success m-4" style="font-size: 5em;" v-if="registration"></i>
+        <i class="mdi mdi-close text-danger m-4" style="font-size: 5em;" v-if="!registration"></i>
 
         <h3 class="m-3">
           {{ `_bmvi.vehicle.registration.${ registration }` | translate }}
@@ -51,13 +51,13 @@
             <template v-slot:footer>
               <button type="button" class="btn btn-rounded font-weight-normal"
                 :class="{ 'btn-danger': registration, 'btn-success': !registration }"
-                @click="setRegistration(); $refs.submitModal.hideModal()">
+                @click="setRegistration(); $refs.submitModal.hide()">
                 {{ `_bmvi.vehicle.registration.set.${ !registration }` | translate }}
               </button>
             </template>
           </evan-modal>
           <button type="submit" class="btn btn-rounded d-flex align-items-center"
-            @click="$refs.submitModal.showModal()"
+            @click="$refs.submitModal.show()"
             :class="{ 'btn-danger': registration, 'btn-success': !registration }"
             :disabled="syncing">
             <div class="spinner-border spinner-border-sm text-light mr-3"

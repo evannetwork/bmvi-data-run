@@ -27,17 +27,18 @@
 
 // vue imports
 import Vue from 'vue';
-import Component from 'vue-class-component';
+import Component, { mixins } from 'vue-class-component';
 import { Prop } from 'vue-property-decorator';
 
 // evan.network imports
+import { EvanComponent } from '@evan.network/ui-vue-core';
 import * as bcc from '@evan.network/api-blockchain-core';
 import * as dappBrowser from '@evan.network/ui-dapp-browser';
 
 import BmviVehicle from '../../bmvi-vehicle';
 
 @Component({ })
-export default class MaintenanceComponent extends Vue {
+export default class MaintenanceComponent extends mixins(EvanComponent) {
   /**
    * show the loading indicator
    */
@@ -81,7 +82,7 @@ export default class MaintenanceComponent extends Vue {
     // initialize vehicle
     this.vehicle = BmviVehicle.getVehicle(
       (<any>this).getRuntime(),
-      (<any>this).activeDApp().contractAddress
+      (<any>this).dapp.contractAddress
     );
 
     try {
@@ -114,7 +115,7 @@ export default class MaintenanceComponent extends Vue {
     const runtime = (<any>this).getRuntime();
     this.syncing = true;
     await runtime.dataContract.addListEntries(
-      (<any>this).activeDApp().contractAddress,
+      (<any>this).dapp.contractAddress,
       'maintenanceData',
       [{description: 'Auto ist kaputt', reference: Date.now(), maintenanceApproved: true}],
       this.activeAccount
@@ -130,7 +131,7 @@ export default class MaintenanceComponent extends Vue {
     const runtime = (<any>this).getRuntime();
     this.syncing = true;
     await runtime.dataContract.addListEntries(
-      (<any>this).activeDApp().contractAddress,
+      (<any>this).dapp.contractAddress,
       'maintenanceData',
       [{ reference: reference, maintenanceFinished: true }],
       this.activeAccount
