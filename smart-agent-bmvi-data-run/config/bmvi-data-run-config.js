@@ -1,5 +1,5 @@
 const defaultConfig = {
-  diabled: false,
+  disabled: true,
   ignoreKeyExchange: false,
   ignoreStoragePayments: true
 }
